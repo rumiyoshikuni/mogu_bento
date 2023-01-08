@@ -1,0 +1,2 @@
+class PreOrderDetail < ApplicationRecord
+end
