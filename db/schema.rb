@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_08_025158) do
+ActiveRecord::Schema.define(version: 2023_01_09_011340) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 2023_01_08_025158) do
   create_table "cart_items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -65,6 +68,12 @@ ActiveRecord::Schema.define(version: 2023_01_08_025158) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.integer "tel_number", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -72,21 +81,40 @@ ActiveRecord::Schema.define(version: 2023_01_08_025158) do
   create_table "genres", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
   end
 
   create_table "items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.string "calorie", null: false
+    t.string "allergy", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
   end
 
   create_table "pre_order_details", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pre_orders_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity", null: false
+    t.integer "status", null: false
+    t.integer "tax_price", null: false
   end
 
   create_table "pre_orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.integer "total_payment", null: false
+    t.boolean "is_active", default: false
+    t.date "receiving_date", null: false
+    t.time "receiving_time", null: false
+    t.text "demand", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
