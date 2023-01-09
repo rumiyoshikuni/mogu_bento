@@ -1,0 +1,49 @@
+<h2 class="head-line title_h2 text-center m-5"><b>メニュー詳細</b></h2>
+<div class="row">
+	<div class="col-6 text-right pr-5">
+    <div id="img_fiel">
+  	  <%= image_tag @item.get_image(300,300) %>
+    </div>
+  </div>
+  
+  <div class="col-6">
+    <div class="field">
+	    <p>商品名　　　　　<%= @item.name %></p>
+    </div><br>
+    
+    <div class="field">
+	    <p>商品説明　　　　<%= @item.introduction %></p><br>
+    </div>
+    
+    <div class="field">
+	    <p>カロリー　　　　<%= @item.calorie.to_s(:delimited) %> kcal</p><br> 
+    </div>
+    
+    <div class="field">
+	    <p>アレルギー物質　　　　<%= @item.allergy %></p><br>
+    </div>
+    
+    <div class="field">
+	    <p>ジャンル　　　　<%= @item.genre.name %></p><br>
+    </div>
+    
+    <div class="field">
+	    <p>税込価格　　　　<%= @item.with_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>) 円<br>
+	      (税抜価格)
+	    </p><br>
+    </div>
+    <div class="field">
+  		<p>
+  		  販売ステータス
+  	      <% if @item.is_active == true %>
+  	      <b class="text-success">　販売中</b>
+  		  <% elsif @item.is_active == false %>
+  			  <b class="text-success">　販売停止中</b>
+  		  <% end %>
+  		</p>
+    </div>
+    <div class="actions">
+      <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success col-3 m-4 p-3" %>
+    </div>
+  </div>
+</div>
