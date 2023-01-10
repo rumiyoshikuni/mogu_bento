@@ -20,7 +20,7 @@ Rails.application.routes.draw do
         get 'over'
       end
     end
-    resource :customers, only: [:show, :edit] do
+    resource :customer, only: [:show, :edit] do
       collection do
         get 'quit'
         patch 'out'
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :pre_orders, only: [:index, :show, :update] do
       resources :pre_order_details, only: [:update]
-    end
   end
 end
+
+    end

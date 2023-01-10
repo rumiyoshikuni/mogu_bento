@@ -12,7 +12,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-              <li><%= link_to customers_path,class: 'btn btn-warning rounded-pill' do %> マイページ <% end %></li>
+              <li><%= link_to customer_path,class: 'btn btn-warning rounded-pill' do %> マイページ <% end %></li>
               <li><%= link_to items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to cart_items_path ,class: 'btn btn-warning rounded-pill' do %></i> カート <% end %></li>
               <li><%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>

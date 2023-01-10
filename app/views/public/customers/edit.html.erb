@@ -2,7 +2,7 @@
   <div class="row">
     <h5 class="col-4 text-center">会員情報編集</h5>
   </div>
-  <%= form_with(model:@customer, url:customers_information_path, local: true ) do |f| %>
+  <%= form_with(model: @customer, url: customer_registration_path, local: true ) do |f| %>
 
   <div class="col-xs-10">
     
@@ -28,9 +28,12 @@
       <%= f.text_field :tel_number, class: "col-sm-2 form-control-static" %>
     </div>
     
-    <div class="actions  ">
-    <%= f.submit "編集内容を保存する", class: "btn btn-primary save col-4 offset-md-3 mr-3" %>
-    <%= link_to '退会する', customers_unsubscribe_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger ml-4"%>
+    <div class="actions ">
+    <%= f.submit "編集内容を保存する", class: "btn btn-primary rounded-pill" %>
+  
+    <%= link_to '退会する', customer_session_path, data: { confilm: "本当に退会しますか？" },class: "glyphicon glyphicon-tint btn btn-danger rounded-pill"%>
     </div>
   </div>
+  <% end %>
+  
 </div>
