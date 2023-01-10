@@ -1,0 +1,30 @@
+<div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render "sidebar", genres: @genres %>
+    </div>
+    <div class="col-lg-8">
+      <h2>
+        <% if params[:genre_id] %>
+          <%= @genre.name %>の商品一覧
+        <% else %>
+          全ての商品一覧
+        <% end %>
+        <span class="h5">（全<%= @items.count %>件）</span>
+      </h2>
+      <div class="d-flex align-content-end flex-wrap">
+        <% @items.each do |item| %>
+          <div class="p-3">
+            <%= link_to item_path(item.id), class: "text-decoration-none text-secondary align-baseline" do %>
+              <%= image_tag item.get_image(300,300) %><br>
+              <%= item.name %><br>
+              ¥ <%= item.with_tax_price %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,13 @@
 <h2 class="head-line title_h2 text-center admin_product_index"><b>メニュー</b></h2>
 
 <%= link_to new_admin_item_path, class: "btn btn-warning pull-right new_product float-right p-3 m-4" do %>
+商品新規登録
   <i class="fas fa-plus"></i>
 <% end %>
 
 <div class="row">
   <div class="col-8 text-center mx-auto p-5">
+    
     <table class="table table-hover table-bordered table-condensed">
       <thead>
         <tr class="info bg-info">
@@ -16,6 +18,7 @@
           <th>ステータス</th>
         </tr>
       </thead>
+      
       <tbody>
 				<% @items.each do |item| %>
   				<tr>
@@ -28,6 +31,7 @@
               <% end %>
             </td>
             <td class="text-right col-auto">
+              <!--delimited数値を3桁区切りにする-->
               ¥<%= item.price.to_s(:delimited) %>
             </td>
             <td class="text-left col-auto">
@@ -44,6 +48,7 @@
         <% end %>
       </tbody>
     </table>
+    
      <%= paginate @items %>
   </div>
 </div>

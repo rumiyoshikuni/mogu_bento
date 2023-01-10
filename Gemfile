@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
+#pumaのバージョンも変更
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
@@ -54,13 +55,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+#デバイス導入
 gem 'devise'
-
+#enumで製作ステータス管理
 gem 'enum_help'
-
+#ページネーション
 gem 'kaminari','~> 1.2.1'
-
+#本番環境でMySQLを利用する、環境変数を管理するための設定
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
