@@ -11,8 +11,10 @@
       <div class="navbar">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <% if customer_signed_in? %>
-              <li><%= link_to customer_path,class: 'btn btn-warning rounded-pill' do %> マイページ <% end %></li>
+            <% if customer_signed_in? && current_customer.email == 'guest@example.com' %>
+              <li><%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
+            <% elsif customer_signed_in? %>
+              <li><%= link_to customers_path,class: 'btn btn-warning rounded-pill' do %> マイページ <% end %></li>
               <li><%= link_to items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to cart_items_path ,class: 'btn btn-warning rounded-pill' do %></i> カート <% end %></li>
               <li><%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
@@ -23,7 +25,7 @@
               <li><%= link_to admin_genres_path,class: 'btn btn-warning rounded-pill' do %> ジャンル <% end %></li>
               <li><%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
             <% else %>
-              
+              <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %></li>
               <li><%= link_to items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to new_customer_registration_path,class: 'btn btn-warning rounded-pill' do %> 新規登録 <% end %></li>
               <li><%= link_to new_customer_session_path ,class: 'btn btn-warning rounded-pill' do %> ログイン <% end %></li>

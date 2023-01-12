@@ -31,4 +31,17 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+
+  def self.guest
+    #find_or_create_by:データの検索と作成を自動的に判断して処理を行う、Railsのメソッド
+    find_or_create_by!(email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.last_name = 'guestcustomer'
+      customer.first_name = 'guestcustomer'
+      customer.last_name_kana = 'guestcustomer'
+      customer.first_name_kana = 'guestcustomer'
+      customer.tel_number = 'guestcustomer'
+    end
+  end
+
 end

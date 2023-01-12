@@ -3,6 +3,7 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   
   before_action :configure_account_update_params, only: [:update]
+  before_action :ensure_guest_customer, only: [:edit, :update]
   
   protected
   
@@ -15,7 +16,13 @@ class Public::RegistrationsController < Devise::RegistrationsController
   end
   
   def after_update_path_for(_resource)
-    customer_path
+    customers_path
+  end
+  
+  def ensure_guest_customer
+    if current_customer.email == "guest@example.com"
+      redirect_to root_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

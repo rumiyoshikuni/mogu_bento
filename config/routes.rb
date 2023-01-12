@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   scope module: :public do
     root to: 'homes#top'
     resources :items, only: [:index, :show]
@@ -20,20 +24,20 @@ Rails.application.routes.draw do
         get 'over'
       end
     end
-    resource :customer, only: [:show, :edit] do
+    resource :customers, only: [:show] do
       collection do
         get 'quit'
         patch 'out'
       end
     end
   end
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
