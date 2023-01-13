@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div calss="row">
     <div class="col-xs-12">
-      <h5 class="alert alert-secondary text-center"><strong>注文履歴一覧</strong></h5>
+      <h5 class="alert alert-secondary text-center"><strong>予約注文履歴一覧</strong></h5>
         <% if @orders.present? %>
           <table class="table table-hover table-bordered">
             <thead>
@@ -15,22 +15,22 @@
               </tr>
             </thead>
             <tbody>
-              <% @orders.each do |order| %>
+              <% @pre_orders.each do |pre_order| %>
                 <tr>
                   <td>
-                    <%= order.created_at.strftime('%Y/%m/%d') %>
+                    <%= pre_order.created_at.strftime('%Y/%m/%d') %>
                   </td>
                   <td class="text-left">
-                    〒<%= order.postal_code %><%= order.address %><br>
-                    <%= order.name %>
+                    <%= pre_order.receiving_date %><br>
+                    <%= pre_order.name %>
                   </td>
                   <td>
-                    <% order.order_details.each do |order_detail| %>
+                    <% pre_order.pre_order_details.each do |pre_order_detail| %>
                       <%= order_detail.item.name %>
                     <% end %>
                   </td>
                   <td class="text-right">
-                    <%= "#{(order.total_price + order.postage).to_s(:delimited)}" %>円
+                    <%= "#{(pre_order.total_price + order.postage).to_s(:delimited)}" %>円
                   </td>
                   <td>
                     <%= order.status_i18n %>
