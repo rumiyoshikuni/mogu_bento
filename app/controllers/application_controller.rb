@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if customer_signed_in?
       root_path
     elsif admin_signed_in?
-      admin_orders_path
+      admin_pre_orders_path
     end
   end
 

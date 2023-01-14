@@ -42,10 +42,6 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_customer_session_path
     end
   end
-  def guest_sign_in
-    customer = Customer.guest
-    sign_in customer
-    redirect_to items_path, notice: 'guestcustomerでログインしました。'
-  end
+
 end
 

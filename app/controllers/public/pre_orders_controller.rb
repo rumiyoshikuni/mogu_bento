@@ -1,6 +1,7 @@
 class Public::PreOrdersController < ApplicationController
 
   before_action :authenticate_customer!
+  before_action :ensure_guest_customer
 
   #予約注文情報の入力画面で受取日、受取時間の選択、要望を入力できる
   def new
@@ -55,6 +56,12 @@ class Public::PreOrdersController < ApplicationController
 
   def pre_order_params
     params.require(:pre_order).permit(:total_payment,:receiving_date, :receiving_time, :demand)
+  end
+  
+  def ensure_guest_customer
+    if current_customer.email == "guest@example.com"
+      redirect_to root_path, notice: 'ゲストユーザーは予約注文情報入力画面へ遷移できません。'
+    end
   end
 
 end
