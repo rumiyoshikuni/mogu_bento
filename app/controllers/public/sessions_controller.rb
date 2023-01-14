@@ -48,3 +48,4 @@ class Public::SessionsController < Devise::SessionsController
     redirect_to items_path, notice: 'guestcustomerでログインしました。'
   end
 end
+

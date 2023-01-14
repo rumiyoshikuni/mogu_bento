@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg" style="background-color:#FFF">
     <div class="container">
       <a class="navbar-brand font-weight-normal" href="/"><%= image_tag 'logo.jpg', size: "100x100"%></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="background-color:#deb887;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" styl>
         <span class="navbar-toggler-icon"></span>
       </button>
       
@@ -11,13 +11,16 @@
       <div class="navbar">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+            <!--ゲストログインかどうかの確認-->
             <% if customer_signed_in? && current_customer.email == 'guest@example.com' %>
               <li><%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
+            <!--会員ログイン-->
             <% elsif customer_signed_in? %>
               <li><%= link_to customers_path,class: 'btn btn-warning rounded-pill' do %> マイページ <% end %></li>
               <li><%= link_to items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to cart_items_path ,class: 'btn btn-warning rounded-pill' do %></i> カート <% end %></li>
               <li><%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
+            <!--管理者ログイン-->
             <% elsif admin_signed_in? %>
               <li><%= link_to admin_items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to admin_customers_path,class: 'btn btn-warning rounded-pill' do %> 会員一覧 <% end %></li>
@@ -25,7 +28,7 @@
               <li><%= link_to admin_genres_path,class: 'btn btn-warning rounded-pill' do %> ジャンル <% end %></li>
               <li><%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
             <% else %>
-              <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %></li>
+              <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-secondary rounded-pill sign_in", method: :post %></li>
               <li><%= link_to items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to new_customer_registration_path,class: 'btn btn-warning rounded-pill' do %> 新規登録 <% end %></li>
               <li><%= link_to new_customer_session_path ,class: 'btn btn-warning rounded-pill' do %> ログイン <% end %></li>

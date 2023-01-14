@@ -44,7 +44,6 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :pre_orders, only: [:index, :show, :update] do
       resources :pre_order_details, only: [:update]
+    end
   end
 end
-
-    end

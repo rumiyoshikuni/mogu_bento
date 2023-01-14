@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  
+  before_action :configure_account_update_params, only: [:update]
+  before_action :ensure_guest_customer, only: [:edit, :update]
 
   def show
     @customer = current_customer
@@ -33,6 +36,12 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :tel_number, :email)
+  end
+  
+  def ensure_guest_customer
+    if current_customer.email == "guest@example.com"
+      redirect_to root_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 
 end
