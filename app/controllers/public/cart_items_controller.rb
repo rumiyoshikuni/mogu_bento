@@ -53,11 +53,11 @@ private
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :price, :quantity)
   end
-  
+
   def ensure_guest_customer
     if current_customer.email == "guest@example.com"
       redirect_to root_path, notice: 'ゲストユーザーはカート画面へ遷移できません。'
     end
   end
-  
+
 end

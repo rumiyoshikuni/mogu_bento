@@ -8,7 +8,6 @@
     </div>
     <div class="col-lg-4">
       <div>
-      <table class="table table-bordered">
         <h2 class="mt-5 mb-3"><%= @item.name%></h2>
         <p><%= @item.introduction %></p>
         <p><%= @item.calorie %> kcal</p>
@@ -19,17 +18,18 @@
           <strong class="h5">¥ <%= @item.with_tax_price %></strong>
           <span> (税込）</span>
         </p>
-      </div>
-      <% if customer_signed_in? && current_customer.email == 'guest@example.com' %>
-      <% else %>
-        <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-        <!--hidden_field:item_id というキーに対して@item.id という値を、ブラウザに表示することなく送ることが可能-->
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <!--セレクトボックス:「1」が選択された場合「1」という値を送る-->
-          <%= f.select :quantity, *[1..10], class: "ml-5" %>
-          <%= f.submit "カゴに入れる", class: "btn btn-success rounded-pill" %>
+        
+        <% if customer_signed_in? && current_customer.email == 'guest@example.com' %>
+        <% else %>
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+          <!--hidden_field:item_id というキーに対して@item.id という値を、ブラウザに表示することなく送ることが可能-->
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <!--セレクトボックス:「1」が選択された場合「1」という値を送る-->
+            <%= f.select :quantity, *[1..10], class: "ml-5" %>
+            <%= f.submit "カゴに入れる", class: "btn btn-success rounded-pill" %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -42,7 +42,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    resources :pre_orders, only: [:index, :show, :update] do
+    get 'pre_orders' => 'homes#top'
+    resources :pre_orders, only: [:show, :update] do
       resources :pre_order_details, only: [:update]
     end
   end
