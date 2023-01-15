@@ -9,8 +9,8 @@
           <tr class="table-active">
             <th class="border border-dark">商品名</th>
             <th class="border border-dark">単価(税込)</th>
-            <th class="border border-dark">数量</th>
-            <th class="border border-dark">小計</th>
+            <th class="border border-dark">注文総数</th>
+            <th class="border border-dark">商品合計金額</th>
           </tr>
         </thead>
           <!-- 会員に確認してもらうための表示 -->
@@ -22,14 +22,13 @@
               <%= cart_item.item.name %>
             </td>
             <td class="text-right">
-              <%= cart_item.item.with_tax_price.to_s(:delimited) %>
+              <%= cart_item.item.with_tax_price.to_s(:delimited) %> 円
             </td>
             <td class="text-right">
-                <%= cart_item.quantity %>
+              <%= cart_item.quantity %> 個
             </td>
             <td class="text-right">
-              <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).to_i %> <!--小計を計算する-->
-              <%= cart_item.subtotal.to_s(:delimited) %> <!--小計を表示-->
+              <%= @total_payment.to_s(:delimited) %> 円
             </td>
           </tr>
         </tbody>

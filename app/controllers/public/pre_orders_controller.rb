@@ -12,10 +12,13 @@ class Public::PreOrdersController < ApplicationController
   def check
     # new 画面から渡ってきたデータを @pre_order に入れる
     @pre_order = PreOrder.new(pre_order_params)
+    @cart_items = current_customer.cart_items.all # カートアイテムの情報を会員に確認してもらうために使用
     @pre_order.total_payment = @total_payment
-    @cart_items = current_customer.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用
     @total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   # 請求金額を出す処理 subtotal はモデルで定義したメソッド
+    # @pre_order.receiving_date = current_customer.receiving_date
+    # @pre_order.receiving_time = current_customer.receiving_time
+    # @pre_order.demand = current_customer.demand
   end
 
   def over

@@ -27,7 +27,7 @@
           <%= f.hidden_field :item_id, :value => @item.id %>
           <!--セレクトボックス:「1」が選択された場合「1」という値を送る-->
           <%= f.select :quantity, *[1..10], class: "ml-5" %>
-          <%= f.submit "カートに入れる", class: "btn btn-success rounded-pill" %>
+          <%= f.submit "カゴに入れる", class: "btn btn-success rounded-pill" %>
         <% end %>
       <% end %>
     </div>
