@@ -44,11 +44,12 @@
             <% elsif admin_signed_in? %>
               <li><%= link_to admin_items_path,class: 'btn btn-warning rounded-pill' do %> メニュー <% end %></li>
               <li><%= link_to admin_customers_path,class: 'btn btn-warning rounded-pill' do %> 会員一覧 <% end %></li>
-              <li><%= link_to admin_orders_path,class: 'btn btn-warning rounded-pill' do %> 予約注文履歴一覧 <% end %> </li>
+              <li><%= link_to admin_pre_orders_path,class: 'btn btn-warning rounded-pill' do %> 予約注文履歴一覧 <% end %> </li>
               <li><%= link_to admin_genres_path,class: 'btn btn-warning rounded-pill' do %> ジャンル  <% end %></li>
               <li><%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-warning rounded-pill' do %> ログアウト <% end %></li>
             <% else %>
               <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-secondary rounded-pill sign_in", method: :post %></li>
+              <li><%= link_to about_path,class: 'btn btn-warning rounded-pill' do %> About <% end %></li>
               <li>
                 <%= link_to items_path,class: 'btn btn-warning rounded-pill' do %>
                 <i class="fas fa-book-open"></i> メニュー
@@ -61,7 +62,7 @@
               </li>
               <li>
                 <%= link_to new_customer_session_path ,class: 'btn btn-warning rounded-pill' do %>
-                <i class="fas fa-sign-in-alt"></i>ログイン
+                <i class="fas fa-sign-in-alt"></i> ログイン
                 <% end %>
               </li>
 

@@ -31,7 +31,6 @@ class Public::PreOrdersController < ApplicationController
     # "01月16日(月) => Date.parse("2023-01-16")
     @pre_order.receiving_date = Date.parse("#{Date.today.year}-#{params[:pre_order][:receiving_date].split('日')[0].gsub!(/[^\d]/, '-')}")
     @pre_order.customer_id = current_customer.id
-    @pre_order.is_active = true
     @pre_order.save
 
       @cart_items = current_customer.cart_items
@@ -40,7 +39,7 @@ class Public::PreOrdersController < ApplicationController
         @pre_order_detail.tax_price = cart_item.item.with_tax_price
         @pre_order_detail.quantity = cart_item.quantity
         @pre_order_detail.item_id = cart_item.item_id
-        @pre_order_detail.pre_orders_id = @pre_order.id
+        @pre_order_detail.pre_order_id = @pre_order.id
         # @pre_order_detail.status = 0 #TODO
         @pre_order_detail.save # カート情報を削除するので item との紐付けが切れる前に保存する
       end
@@ -55,14 +54,21 @@ class Public::PreOrdersController < ApplicationController
   end
 
   def show
+    # checkでリロードされた時の対策
+    if params[:id] == "check"
+      flash[:notice] = "リロードされた為入力画面に戻りました。"
+      redirect_to new_pre_order_path
+      return
+    end
     @pre_order = PreOrder.find(params[:id])
+    @pre_order_detail = PreOrderDetail.find(params[:id])
     @pre_order_details = @pre_order.pre_order_details.all
   end
 
   private
 
   def pre_order_params
-    params.require(:pre_order).permit(:total_payment, :receiving_date, :receiving_time, :demand)
+    params.require(:pre_order).permit(:customer_id, :item_id, :total_payment, :receiving_date, :receiving_time, :demand)
   end
 
   def ensure_guest_customer

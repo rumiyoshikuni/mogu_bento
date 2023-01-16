@@ -1,24 +1,30 @@
 Rails.application.routes.draw do
-  # 顧客用
+  
+  namespace :admin do
+    get 'pre_order_details/update'
+  end
+  # 会員用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
+  
+  #ゲストユーザーをログイン状態にする
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/customers/sessions#guest_sign_in'
   end
 
   scope module: :public do
     root to: 'homes#top'
+    get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
       resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
         delete "all_destroy"
       end
     end
-    resources :pre_orders, only: [:new, :index, :show, :create] do
+    resources :pre_orders, only: [:new, :index, :show, :create, :destroy] do
       collection do
         post 'check'
         get 'over'

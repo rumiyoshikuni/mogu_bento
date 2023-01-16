@@ -2,15 +2,16 @@
   <div calss="row">
     <div class="col-xs-12">
       <h5 class="alert alert-secondary text-center"><strong>予約注文履歴一覧</strong></h5>
-        <% if @orders.present? %>
+        <% if @pre_orders.present? %>
           <table class="table table-hover table-bordered">
             <thead>
               <tr class="info">
-                <th>注文日</th>
-                <th>配送先</th>
-                <th>注文商品</th>
+                <th>予約注文日</th>
+                <th>予約注文商品</th>
+                <th>受取り日</th>
+                <th>受取り時間</th>
+                <th>ご要望</th>
                 <th>支払金額</th>
-                <th>ステータス</th>
                 <th>注文詳細</th>
               </tr>
             </thead>
@@ -18,25 +19,27 @@
               <% @pre_orders.each do |pre_order| %>
                 <tr>
                   <td>
-                    <%= pre_order.created_at.strftime('%Y/%m/%d') %>
-                  </td>
-                  <td class="text-left">
-                    <%= pre_order.receiving_date %><br>
-                    <%= pre_order.name %>
+                    <%= pre_order.created_at.strftime('%Y年%m月%d日') %>
                   </td>
                   <td>
                     <% pre_order.pre_order_details.each do |pre_order_detail| %>
-                      <%= order_detail.item.name %>
+                      <%= pre_order_detail.item.name %>
                     <% end %>
                   </td>
-                  <td class="text-right">
-                    <%= "#{(pre_order.total_price + order.postage).to_s(:delimited)}" %>円
+                  <td class="text-left">
+                    <%= pre_order.receiving_date.strftime('%m月%d日') %><br>
                   </td>
-                  <td>
-                    <%= order.status_i18n %>
+                  <td class="text-left">
+                    <%= pre_order.receiving_time.strftime("%H時%M分") %><br>
+                  </td>
+                  <td class="text-left">
+                    <%= pre_order.demand %><br>
+                  </td>
+                  <td class="text-right">
+                    <%= pre_order.total_payment.to_s(:delimited) %>円
                   </td>
            	      <td>
-                    <%= form_with model: order, url: order_path(order), method: :get do |f| %>
+                    <%= form_with model: pre_order, url: pre_order_path(pre_order), method: :get do |f| %>
                       <%= f.submit "表示する", class: "btn btn-info" %>
                     <% end %>
                   </td>

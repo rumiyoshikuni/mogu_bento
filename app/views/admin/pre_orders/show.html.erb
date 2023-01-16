@@ -13,29 +13,19 @@
         </tr>
         <tr>
           <td>予約注文日</td>
-          <td><%= @pre_order.created_at.strftime("%Y/%m/%d") %></td>
+          <td><%= @pre_order.created_at.strftime('%Y年%m月%d日') %></td>
         </tr>
         <tr>
           <td>受取り日</td>
-          <td><%= @receiving_date %></td>
+          <td><%= @pre_order.receiving_date.strftime('%m月%d日') %></td>
         </tr>
         <tr>
           <td>受取り時間</td>
-          <td><%= @pre_order.receiving_time %></td>
+          <td><%= @pre_order.receiving_time.strftime("%H時%M分") %></td>
         </tr>
         <tr>
           <td>ご要望</td>
           <td><%= @pre_order.demand %></td>
-        </tr>
-        <tr>
-          <td>予約注文ステータス</td>
-          <td>
-            <% if item.is_active == true %>
-              <p>当日</p>
-            <% elsif item.is_active == false %>
-              <p>翌日️</p>
-            <% end %>
-          </td>
         </tr>
       </table>
     <% end %>
@@ -51,19 +41,20 @@
             <th>小計</th>
             <th>製作ステータス</th>
           </tr>
-          <% @order_details.each do |pre_order_detail| %>
-            <%= form_with model: pre_order_detail, url: admin_pre_order_detail_path(pre_order_detail.id), method: :patch do |f| %>
+          <% @pre_order_details.each do |pre_order_detail| %>
+            <%= form_with model: pre_order_detail, url: admin_pre_order_path(pre_order_detail.id), method: :patch do |f| %>
             <tr>
               <td><%= pre_order_detail.item.name %></td>
               <td><%= pre_order_detail.tax_price %></td>
               <td><%= pre_order_detail.quantity %></td>
               <td><%= pre_order_detail.quantity.to_i * pre_order_detail.tax_price %>円</td>
               <td>
-                <% if customer.is_maked == false %>
-                  <p>製作中</p>
-                 <% elsif customer.is_maked == true %>
-                  <p>製作完了</p>
-              	<% end %>
+                <%= f.label :"製作ステータス", class: "col-sm-6 control-label" %>
+                <%= f.radio_button :is_maked, "false" %>
+                <%= f.label :"製作中" %>
+                <%= f.radio_button :is_maked, "true" %>
+                <%= f.label :"製作完了" %>
+                <%= f.submit "更新", class: "btn btn-success" %>
               </td>
             </tr>
             <% end %>
@@ -74,7 +65,7 @@
       <table class="table table-borderless">
         <tr>
           <th>請求金額</th>
-          <td><strong><%= @total_peyment %> 円</strong></td>
+          <td><strong><%= @total_payment %> 円</strong></td>
         </tr>
       </table>
     </div>

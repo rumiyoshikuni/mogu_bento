@@ -1,42 +1,52 @@
 <div class="container px-5 px-sm-0">
   <div calss="row">
     <h5 class="alert alert-secondary text-center"><strong>予約注文履歴詳細</strong></h5>
-    <% if @order.present? %>
+    <% if @pre_order.present? %>
       <div class="col-xs-7">
         <strong>予約注文情報</strong>
           <table class="table table-bordered">
             <tbody>
                 <tr>
                   <th class="info">予約注文日</th>
-                    <td class="text-left"><%= @pre_order.created_at.strftime('%Y/%m/%d') %></td>
+                    <td class="text-left"><%= @pre_order.created_at.strftime('%Y年%m月%d日') %></td>
                 </tr>
                 <tr>
                 　<th class="info">受取り日</th>
-                    <td class="text-left"><%= @receiving_date %></td>
+                    <td class="text-left"><%= @pre_order.receiving_date.strftime('%m月%d日') %></td>
                 </tr>
                 <tr>
                 　<th class="info">受取り時間</th>
-                    <td class="text-left"><%= @pre_order.receiving_time %></td>
+                    <td class="text-left"><%= @pre_order.receiving_time.strftime("%H時%M分") %></td>
                 </tr>
                 <tr>
                   <th class="info">ご要望</th>
                     <td class="text-left"><%= @pre_order.demand %></td>
                 </tr>
+                <tr>
+                  <th class="info">ステータス</th>
+                    <td class="text-left">
+                      <% if @pre_order_detail.is_maked == false %>
+                        <p>製作中</p>
+                      <% elsif @pre_order_detail.is_maked == true %>
+                        <p>製作完了</p>
+                      <% end %>
+                    </td>
+                </tr>
             </tbody>
           </table>
       </div>
-  
+
       <div class="col-xs-3 col-xs-offset-1">
         <strong>請求情報</strong>
           	<table class="table table-bordered">
                 <th class="info">ご請求金額</th>
-                <td class="text-right col-xs-5"><%= @total_payment.to_s(:delimited) %>円</td>
+                <td class="text-right col-xs-5"><%= @pre_order.total_payment.to_s(:delimited) %>円</td>
               </tr>
           </table>
       </div>
       <div class="col-xs-10">
         <strong></i>予約注文内容</strong>
-          <table class="table table-striped table-bordered">
+          <table class="table table-bordered">
             <thead>
             <tr class="info">
               <th>商品</th>
@@ -50,12 +60,13 @@
               <tr>
               <td><%= pre_order_detail.item.name %></td>
               <td class="text-right"><%= (pre_order_detail.item.with_tax_price).to_s(:delimited) %>円</td>
-              <td class="text-right"><%= pew_order_detail.quantity %></td>
-              <td class="text-right"><%= (pew_order_detail.item.with_tax_price * pew_order_detail.quantity).to_s(:delimited) %>円</td>
+              <td class="text-right"><%= pre_order_detail.quantity %></td>
+              <td class="text-right"><%= (pre_order_detail.item.with_tax_price * pre_order_detail.quantity).to_s(:delimited) %>円</td>
               </tr>
             <% end %>
             </tbody>
           </table>
+          <%= "※キャンセルにつきましては、お電話にてご相談ください。" %>
       </div>
     <% else %>
       <p>注文履歴がありません。</p>

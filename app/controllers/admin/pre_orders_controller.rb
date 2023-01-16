@@ -1,6 +1,6 @@
 class Admin::PreOrdersController < ApplicationController
 
-  before_action :authenticate_admin!
+  # before_action :authenticate_admin!
 
   def show
     @pre_order_details = PreOrderDetail.where(pre_order_id: params[:id])
@@ -25,7 +25,7 @@ class Admin::PreOrdersController < ApplicationController
 
   private
   def pre_order_params
-    params.require(:pre_order).permit(:is_active)
+    params.require(:pre_order).permit(:is_maked)
   end
 
 end
