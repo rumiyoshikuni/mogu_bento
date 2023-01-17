@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :admin do
     get 'pre_order_details/update'
   end
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   #ゲストユーザーをログイン状態にする
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/customers/sessions#guest_sign_in'
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
         delete "all_destroy"
       end
     end
-    resources :pre_orders, only: [:new, :index, :show, :create, :destroy] do
+    resources :pre_orders, only: [:new, :index, :show, :create] do
       collection do
         post 'check'
         get 'over'
@@ -49,8 +49,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
     get 'pre_orders' => 'homes#top'
-    resources :pre_orders, only: [:show, :update] do
-      resources :pre_order_details, only: [:update]
-    end
+    resources :pre_orders, only: [:show]
+    resources :pre_order_details, only: [:update]
   end
 end

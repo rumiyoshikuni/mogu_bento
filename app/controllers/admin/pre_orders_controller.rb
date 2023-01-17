@@ -1,6 +1,6 @@
 class Admin::PreOrdersController < ApplicationController
 
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def show
     @pre_order_details = PreOrderDetail.where(pre_order_id: params[:id])
@@ -15,17 +15,6 @@ class Admin::PreOrdersController < ApplicationController
     @total_paymen += subtotal
     }
     return @total_paymen
-  end
-
-  def update
-    pre_order_details = PreOrderDetail.where(pre_order_id: params[:id])
-    pre_order = PreOrder.find(params[:id])
-    pre_order.update(pre_order_params)
-  end
-
-  private
-  def pre_order_params
-    params.require(:pre_order).permit(:is_maked)
   end
 
 end

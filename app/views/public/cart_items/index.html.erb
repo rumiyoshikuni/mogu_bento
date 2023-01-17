@@ -1,16 +1,15 @@
-<div class="container">
+<div class="container my-5 px-5 px-sm-0">
   <div class="row">
+    <span class="text-info"><%= "ショッピングカート" %></span> > <%= "予約注文情報入力" %> > <%= "予約注文情報確認" %> ><%= "ご注文完了" %>
     <div class="col-10">
       <div class="row my-4">
         <div class="col-6">
-          <h2 class="">買い物カゴ</h2>
+          <h4 class="">ショッピングカート</h4>
         </div>
           <div class="col-6 text-right">
             <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete,
               class: "btn btn-danger rounded-pill", "data-confirm" => "本当に空にしますか？" %>
           </div>
-
-          <%= "買い物カゴ" %> > <%= "予約注文情報入力" %> > <%= "予約注文情報確認" %> ><%= "ご注文完了" %>
 
           <table class="table table-bordered">
              <tr>
@@ -54,7 +53,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 text-left">
-      <%= link_to "買い物を続ける", items_path, class:"btn btn-primary rounded-pill" %>
+      <%= link_to "買い物を続ける", items_path, class:"btn btn-info rounded-pill" %>
     </div>
     <table class="table table-bordered col-2 text-right ml-5">
       <tr>

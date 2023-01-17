@@ -46,11 +46,10 @@ class Public::PreOrdersController < ApplicationController
 
     @cart_items.destroy_all # 会員に関連するカートのデータ(予約注文したデータ)をすべて削除(カートを空にする)
     redirect_to over_pre_orders_path
-
   end
 
   def index
-    @pre_orders = current_customer.pre_orders.page(params[:page])
+    @pre_orders = current_customer.pre_orders.page(params[:page]).per(10)
   end
 
   def show
@@ -68,7 +67,7 @@ class Public::PreOrdersController < ApplicationController
   private
 
   def pre_order_params
-    params.require(:pre_order).permit(:customer_id, :item_id, :total_payment, :receiving_date, :receiving_time, :demand)
+    params.require(:pre_order).permit(:customer_id, :total_payment, :receiving_date, :receiving_time, :demand, :quantity, :item_id)
   end
 
   def ensure_guest_customer

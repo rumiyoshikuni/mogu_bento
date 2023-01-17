@@ -1,5 +1,6 @@
 <div class="container my-5 px-5 px-sm-0">
   <div class="row">
+    <%= "ショッピングカート" %> > <%= "予約注文情報入力" %> > <span class="text-info"><%= "予約注文情報確認" %></span> > <%= "ご注文完了" %>
     <div class="col-sm-12">
       <div class="px-5 py-4">
         <h4>予約注文情報確認</h4>
@@ -64,7 +65,7 @@
         <%= f.hidden_field :demand, value: @pre_order.demand %>
         <%= f.hidden_field :total_payment, value: @total_payment %>
         <%= "※キャンセルにつきましては、お電話にてご相談ください。" %>
-        <%= f.submit "注文を確定する", class: "btn btn-success center-block col-xs-5" %>
+        <%= f.submit "注文を確定する", class: "btn btn-info rounded-pill" %>
       <% end %>
     </div>
   </div>
