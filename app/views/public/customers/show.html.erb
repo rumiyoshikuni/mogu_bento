@@ -1,8 +1,11 @@
-<div class="row">
-  <div class="col-8 pl-5">
-    <h2 class="head-line title_h2 text-center"><b>マイページ</b></h2>
+<div class="container my-5 px-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-10">
+    <div class="px-5 py-4">
+      <h3>マイページ</h3>
+    </div>
 
-    <b>登録情報 <%= link_to "編集する", edit_customer_registration_path, class: "btn btn-success rounded-pill" %></b>
+    <p>登録情報 <%= link_to "編集する", edit_customer_registration_path, class: "btn btn-success rounded-pill" %></p>
 
     <table class="table table-bordered table-condensed mt-3">
       <tbody>
@@ -17,7 +20,7 @@
         </tr>
 
         <tr>
-          <td class="bg-light col-2">電話番号</td>
+          <td class="bg-light col-2">電話番号(ハイフンなし10or11桁)</td>
           <td class="col-10"><%= @customer.tel_number %></td>
         </tr>
 
@@ -29,7 +32,7 @@
     </table>
 
     <div class="col-5 p-3">
-      <b>注文履歴 <%= link_to "一覧を見る", pre_orders_path, class: "btn btn-primary rounded-pill" %></b>
+      <p>注文履歴 <%= link_to "一覧を見る", pre_orders_path, class: "btn btn-info rounded-pill" %></p>
     </div>
 
   </div>

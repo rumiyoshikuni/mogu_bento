@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  
+  before_action :authenticate_admin!
 
   def index
     @items = Item.page(params[:page]).per(5)
@@ -32,7 +34,7 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "商品の更新に成功しました。"
+      flash[:notice] = "商品を更新しました。"
       redirect_to admin_item_path(@item.id)
     else
       @genres = Genre.all

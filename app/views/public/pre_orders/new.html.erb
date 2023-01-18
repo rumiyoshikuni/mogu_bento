@@ -12,13 +12,14 @@
           <%= form_with model: @pre_order, url: check_pre_orders_path, method: :post do |f| %>
             <div class="form-group row">
               <p class="col-3">受取り日変更</p>
-              <%= f.select :receiving_date, (0..1).to_a.map {|i| [(Time.now + i.days).strftime("%m月%d日(#{%w(日 月 火 水 木 金 土)[(Time.now + i.days).wday]})")]}, {}, {:class => 'class'} %>
+              <%= f.select :receiving_date, (0..6).to_a.map {|i| [(Time.now + i.days).strftime("%m月%d日(#{%w(日 月 火 水 木 金 土)[(Time.now + i.days).wday]})")]}, {}, {:class => 'class'} %>
               <%#= f.date_select :receiving_date %>
             </div>
 
             <div class="form-group row">
               <p class="col-3">受取り時間</p>
               <%= f.time_select :receiving_time, { start_hour: 10, end_hour: 20, minute_step: 10}, {class: 'time-box'} %>
+              <p>※お受取り時間は20時50分までとなっております。</p>
             </div>
 
             <div class="form-group row">

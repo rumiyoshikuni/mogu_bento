@@ -1,6 +1,3 @@
-<div class="col-4 font-weight-bold bg-light">
-<%= flash[:notice] %>
-</div>
 <div class="container my-5 px-5 px-sm-0">
   <div class="row">
     <span class="text-info"><%= "ショッピングカート" %></span> > <%= "予約注文情報入力" %> > <%= "予約注文情報確認" %> ><%= "ご注文完了" %>
@@ -14,14 +11,14 @@
             class: "btn btn-danger rounded-pill", "data-confirm" => "本当に空にしますか？" %>
         </div>
 
-          <table class="table table-bordered">
-             <tr>
+          <table class="table table-bordered ">
+            <tr>
               <th>商品名</th>
               <th>単価(税込)</th>
               <th>数量</th>
               <th>小計</th>
               <th></th>
-             </tr>
+            </tr>
               <% total = 0 %> <!--合計金額totalの初期化-->
               <% if current_customer.cart_items.present? %> <!--カート内に商品があった場合-->
                 <% @cart_items.each do |cart_item| %>

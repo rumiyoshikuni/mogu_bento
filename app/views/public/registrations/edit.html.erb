@@ -1,7 +1,8 @@
 <div class="row">
+  <%= flash[:success] %>
   <div class="col-xs-12 mx-auto">
     <div class="text-center p-4">
-      <h2><b>会員情報編集</b></h2>
+      <h2>会員情報編集</h2>
     </div>
     <%= form_with model: @customer, url: customer_registration_path, method: :put do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>

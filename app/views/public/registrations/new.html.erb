@@ -25,7 +25,7 @@
 
       <div class="field row mt-2">
         <p class="col-4">メールアドレス</p>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'test@sample.com' %>
       </div>
 
       <% if session[:customer].present? %>

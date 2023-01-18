@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'pre_order_details/update'
-  end
   # 会員用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -19,6 +16,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
+      resource :customers,only: [] do
+      get "my_page"=>"customers#show"
+      get "information/edit"=>"customers#edit"
+      patch "information"=>"customers#update"
+      get 'quit'
+      patch 'out'
+    end
       resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
         delete "all_destroy"
@@ -28,12 +32,6 @@ Rails.application.routes.draw do
       collection do
         post 'check'
         get 'over'
-      end
-    end
-    resource :customers, only: [:show] do
-      collection do
-        get 'quit'
-        patch 'out'
       end
     end
   end

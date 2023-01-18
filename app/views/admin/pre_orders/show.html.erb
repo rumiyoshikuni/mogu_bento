@@ -2,7 +2,7 @@
   
   <div class="row justify-content-center">
     <div class="col-lg-10">
-      <h2>予約注文履歴詳細</h2><br>
+      <h3>予約注文履歴詳細</h3><br>
       <%= form_with model: @pre_order, url: admin_pre_order_path do |f| %>
         <table class="table table-borderless table-sm">
           <tr>
@@ -36,31 +36,31 @@
   <div class="row justify-content-center">
     <div class="col-lg-7 mt-3">
       <table class="table table-bordered border-dark">
-          <tr class="table-secondary">
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>製作ステータス</th>
+        <tr class="table-secondary">
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+        </tr>
+        <% @pre_order_details.each do |pre_order_detail| %>
+        <%= form_with model: pre_order_detail, url: admin_pre_order_detail_path(pre_order_detail.id), method: :patch do |f| %>
+          <tr>
+            <td><%= pre_order_detail.item.name %></td>
+            <td><%= pre_order_detail.tax_price %></td>
+            <td><%= pre_order_detail.quantity %></td>
+            <td><%= pre_order_detail.quantity.to_i * pre_order_detail.tax_price %>円</td>
+            <td>
+              <%= f.label :"製作ステータス", class: "col-sm-6 control-label" %>
+              <%= f.radio_button :is_maked, "false" %>
+              <%= f.label :"製作中" %>
+              <%= f.radio_button :is_maked, "true" %>
+              <%= f.label :"製作完了" %>
+              <%= f.submit "更新", class: "btn btn-success" %>
+            </td>
           </tr>
-          <% @pre_order_details.each do |pre_order_detail| %>
-            <%= form_with model: pre_order_detail, url: admin_pre_order_detail_path(pre_order_detail.id), method: :patch do |f| %>
-            <tr>
-              <td><%= pre_order_detail.item.name %></td>
-              <td><%= pre_order_detail.tax_price %></td>
-              <td><%= pre_order_detail.quantity %></td>
-              <td><%= pre_order_detail.quantity.to_i * pre_order_detail.tax_price %>円</td>
-              <td>
-                <%= f.label :"製作ステータス", class: "col-sm-6 control-label" %>
-                <%= f.radio_button :is_maked, "false" %>
-                <%= f.label :"製作中" %>
-                <%= f.radio_button :is_maked, "true" %>
-                <%= f.label :"製作完了" %>
-                <%= f.submit "更新", class: "btn btn-success" %>
-              </td>
-            </tr>
-            <% end %>
           <% end %>
+        <% end %>
       </table>
     </div>
     <div class="col-lg-3 mt-3">
