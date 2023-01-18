@@ -25,7 +25,7 @@ class Public::CartItemsController < ApplicationController
   def update
     cart_item = CartItem.find(params[:id])
     if cart_item.update(cart_item_params)
-      flash[:notice] = "商品の数量を変更しました。"
+      flash[:notice] = "数量を変更しました。"
     redirect_to cart_items_path
   # カートアイテムの更新に成功した時の処理
     else
@@ -38,13 +38,13 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
-    flash[:notice] = "商品を削除しました。"
+    flash[:notice] = "削除しました。"
     redirect_to cart_items_path
   end
 
   def all_destroy  #カート内全て削除
     current_customer.cart_items.destroy_all
-    flash[:notice] = "商品を全て削除しました。"
+    flash[:notice] = "全て削除しました。"
     redirect_to cart_items_path
   end
 

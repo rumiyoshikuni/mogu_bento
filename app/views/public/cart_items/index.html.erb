@@ -1,3 +1,6 @@
+<div class="col-4 font-weight-bold bg-light">
+<%= flash[:notice] %>
+</div>
 <div class="container my-5 px-5 px-sm-0">
   <div class="row">
     <span class="text-info"><%= "ショッピングカート" %></span> > <%= "予約注文情報入力" %> > <%= "予約注文情報確認" %> ><%= "ご注文完了" %>
@@ -6,10 +9,10 @@
         <div class="col-6">
           <h4 class="">ショッピングカート</h4>
         </div>
-          <div class="col-6 text-right">
-            <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete,
-              class: "btn btn-danger rounded-pill", "data-confirm" => "本当に空にしますか？" %>
-          </div>
+        <div class="col-6 text-right">
+          <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete,
+            class: "btn btn-danger rounded-pill", "data-confirm" => "本当に空にしますか？" %>
+        </div>
 
           <table class="table table-bordered">
              <tr>
