@@ -24,8 +24,8 @@ Rails.application.routes.draw do
       patch 'out'
     end
       resources :cart_items, only: [:index, :create, :update, :destroy] do
-      collection do
-        delete "all_destroy"
+        collection do
+          delete "all_destroy"
       end
     end
     resources :pre_orders, only: [:new, :index, :show, :create] do

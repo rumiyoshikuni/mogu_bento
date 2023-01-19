@@ -3,14 +3,15 @@
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <h3>予約注文履歴詳細</h3><br>
-      <%= form_with model: @pre_order, url: admin_pre_order_path do |f| %>
-        <table class="table table-borderless table-sm">
+      <table class="table table-borderless table-sm">  
+        <%= form_with model: @pre_order, url: admin_pre_order_path do |f| %>
           <tr>
             <td style="width: 20%">購入者</td>
             <td style="width: 80%">
               <%= link_to admin_customer_path(@pre_order.customer_id) do %>
-                <%= @pre_order.customer.last_name + @pre_order.customer.first_name %></td>
+                <%= @pre_order.customer.last_name + @pre_order.customer.first_name %>
               <% end %>
+            </td>
           </tr>
           <tr>
             <td>予約注文日</td>
@@ -28,8 +29,8 @@
             <td>ご要望</td>
             <td><%= @pre_order.demand %></td>
           </tr>
-        </table>
-      <% end %>
+        <% end %>
+      </table>
     </div>
   </div>
   

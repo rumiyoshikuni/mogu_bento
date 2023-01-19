@@ -6,42 +6,43 @@
         <strong>予約注文情報</strong>
           <table class="table table-bordered">
             <tbody>
-                <tr>
-                  <th class="info">予約注文日</th>
-                    <td class="text-left"><%= @pre_order.created_at.strftime('%Y年%m月%d日') %></td>
-                </tr>
-                <tr>
-                　<th class="info">受取り日</th>
-                    <td class="text-left"><%= @pre_order.receiving_date.strftime('%m月%d日') %></td>
-                </tr>
-                <tr>
-                　<th class="info">受取り時間</th>
-                    <td class="text-left"><%= @pre_order.receiving_time.strftime("%H時%M分") %></td>
-                </tr>
-                <tr>
-                  <th class="info">ご要望</th>
-                    <td class="text-left"><%= @pre_order.demand %></td>
-                </tr>
-                <tr>
-                  <th class="info">ステータス</th>
-                    <td class="text-left">
-                      <% if @pre_order_detail.is_maked == false %>
-                        <p>製作中</p>
-                      <% elsif @pre_order_detail.is_maked == true %>
-                        <p>製作完了</p>
-                      <% end %>
-                    </td>
-                </tr>
+              <tr>
+                <th class="info">予約注文日</th>
+                  <td class="text-left"><%= @pre_order.created_at.strftime('%Y年%m月%d日') %></td>
+              </tr>
+              <tr>
+              　<th class="info">受取り日</th>
+                  <td class="text-left"><%= @pre_order.receiving_date.strftime('%m月%d日') %></td>
+              </tr>
+              <tr>
+              　<th class="info">受取り時間</th>
+                  <td class="text-left"><%= @pre_order.receiving_time.strftime("%H時%M分") %></td>
+              </tr>
+              <tr>
+                <th class="info">ご要望</th>
+                  <td class="text-left"><%= @pre_order.demand %></td>
+              </tr>
+              <tr>
+                <th class="info">ステータス</th>
+                  <td class="text-left">
+                    <% if @pre_order_detail.is_maked == false %>
+                      <p>製作中</p>
+                    <% elsif @pre_order_detail.is_maked == true %>
+                      <p>製作完了</p>
+                    <% end %>
+                  </td>
+              </tr>
             </tbody>
           </table>
       </div>
 
       <div class="col-xs-3 col-xs-offset-1">
         <strong>請求情報</strong>
-          	<table class="table table-bordered">
-                <th class="info">ご請求金額</th>
+          <table class="table table-bordered">
+            <tr>
+              <th class="info">ご請求金額</th>
                 <td class="text-right col-xs-5"><%= @pre_order.total_payment.to_s(:delimited) %>円</td>
-              </tr>
+            </tr>
           </table>
       </div>
       <div class="col-xs-10">

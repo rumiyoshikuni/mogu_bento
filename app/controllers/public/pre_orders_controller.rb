@@ -40,7 +40,6 @@ class Public::PreOrdersController < ApplicationController
         @pre_order_detail.quantity = cart_item.quantity
         @pre_order_detail.item_id = cart_item.item_id
         @pre_order_detail.pre_order_id = @pre_order.id
-        # @pre_order_detail.status = 0 #TODO
         @pre_order_detail.save # カート情報を削除するので item との紐付けが切れる前に保存する
       end
 

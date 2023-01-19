@@ -26,12 +26,15 @@ class Admin::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # 
   
+  #管理者のログイン、ログアウト
   protected
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインしました。"
     admin_pre_orders_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました。"
     new_admin_session_path
   end
 

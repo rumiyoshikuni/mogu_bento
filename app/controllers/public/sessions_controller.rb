@@ -26,9 +26,7 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-
-
+  
   #退会している場合の処理内容
   # 退会しているかを判断するメソッド
   def customer_state
@@ -41,6 +39,17 @@ class Public::SessionsController < Devise::SessionsController
       flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
       redirect_to new_customer_session_path
     end
+  end
+  
+  #会員のログイン、ログアウト
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインしました。"
+    root_path
+  end
+  
+  def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました。"
+    root_path
   end
 
 end
