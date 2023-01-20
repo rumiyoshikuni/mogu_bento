@@ -65,6 +65,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #会員の新規登録
   def after_sign_up_path_for(resource)
     flash[:notice] = "新規登録が完了しました。"
-    my_page_customers_path
+    root_path
   end
 end

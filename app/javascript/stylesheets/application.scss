@@ -1,2 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+p, h1, h2, h3, h4, h5 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+iframe {
+    width: 400px; 
+    height: 300px;
+}
