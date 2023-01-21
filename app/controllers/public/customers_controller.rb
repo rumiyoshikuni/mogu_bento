@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   
-  before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_customer!
   before_action :ensure_guest_customer, only: [:edit, :update]
 
   def show

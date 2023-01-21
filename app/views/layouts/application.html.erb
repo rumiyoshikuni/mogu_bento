@@ -8,7 +8,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.pay.jp/" , type="text/javascript"></script>
-    <!--グーグルフォント-->
+    <!--Googlefont-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
@@ -16,7 +16,13 @@
   
   <body style="background-color:#bcc7d7;">
     <div class="pb-5 sticky-top"><%= render 'layouts/header' %></div>
-    <%= flash[:notice] %>
+    <main>
+      <% if flash[:notice] %>
+        <div class="alert alert-light">
+          <span class="ml-2"><%= notice %></span>
+        </div>
+      <% end %>
+    </main>
     <div class="mb-5"><%= yield %></div>
     <div class="pt-5"><%= render 'layouts/footer' %></div>
   </body>

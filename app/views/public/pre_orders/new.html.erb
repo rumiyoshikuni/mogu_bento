@@ -1,6 +1,6 @@
 <div class="container my-5 px-5 px-sm-0">
   <div class="row">
-    <%= "ショッピングカート" %> > <span class="text-info"><%= "予約注文情報入力" %></span> > <%= "予約注文情報確認" %> > <%= "ご注文完了" %>
+    <p>ショッピングカート</p> > <span class="text-info">予約注文情報入力</span> > <p>予約注文情報確認</p> > <p>ご注文完了</p>
     <div class="col-sm-12">
       <div class="px-5 py-4">
         <h4>予約注文情報入力</h4>
@@ -18,7 +18,8 @@
 
             <div class="form-group row">
               <p class="col-3">受取り時間</p>
-              <%= f.time_select :receiving_time, { start_hour: 10, end_hour: 20, minute_step: 10}, {class: 'time-box'} %>
+              <%= f.time_select :receiving_time, { start_hour: 10.minutes.from_now(Time.current).hour, end_hour: 20, start_min: Time.current.min, minute_step: 10}, {class: 'time-box'} %>
+              <!--Time.current.hour：今の時間から選択でき,遡れないようにする-->
               <p>※お受取り時間は20時50分までとなっております。</p>
             </div>
 
@@ -31,7 +32,7 @@
               <%= f.submit "確認画面へ進む", class: "btn btn-info rounded-pill" %>
             </div>
           <% end %>
-          <%= "※キャンセルにつきましては、お電話にてご相談ください。" %>
+          <p>※キャンセルにつきましては、お電話にてご相談ください。</p>
         </div>
       <% else %>
         <p>ご注文の商品を選択して下さい。</p>
@@ -40,3 +41,29 @@
     </div>
   </div>
 </div>
+
+<style>
+  .hide {display: none;}
+</style>
+
+<script>
+  const options = document.querySelectorAll('#pre_order_receiving_time_5i > option');
+
+  // reset
+  options.forEach(function(element) {
+    element.classList.remove('hide');
+    element.selected = false;
+  });
+
+  // current time 
+  options.forEach(function(element) {
+    if (Number(<%= Time.current.min %> >= 50)) {
+      return;
+    } else if (Number(element.value) < Number(<%= Time.current.min %>)) {
+      element.classList.add('hide');
+    }
+  });
+  
+  const last_option = document.querySelector('#pre_order_receiving_time_5i > option:not(.hide)');
+  last_option.selected = true;
+</script>

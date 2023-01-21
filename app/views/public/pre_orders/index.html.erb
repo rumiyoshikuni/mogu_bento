@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div calss="row">
     <div class="col-xs-12">
-      <h5 class="alert alert-secondary text-center"><strong>予約注文履歴一覧</strong></h5>
+      <h5 class="alert alert-secondary text-center">予約注文履歴一覧</h5>
         <% if @pre_orders.present? %>
           <table class="table table-hover table-bordered">
             <thead>
@@ -26,19 +26,19 @@
                       <%= pre_order_detail.item.name %>
                     <% end %>
                   </td>
-                  <td class="text-left">
+                  <td class="auto">
                     <%= pre_order.receiving_date.strftime('%m月%d日') %><br>
                   </td>
-                  <td class="text-left">
+                  <td class="auto">
                     <%= pre_order.receiving_time.strftime("%H時%M分") %><br>
                   </td>
-                  <td class="text-left">
+                  <td class="auto">
                     <%= pre_order.demand %><br>
                   </td>
-                  <td class="text-right">
+                  <td class="auto">
                     <%= pre_order.total_payment.to_s(:delimited) %>円
                   </td>
-           	      <td>
+           	      <td class="auto">
            	        <%= link_to "表示する",pre_order_path(pre_order), class: "btn btn-info rounded-pill" %>
                   </td>
                 </tr>

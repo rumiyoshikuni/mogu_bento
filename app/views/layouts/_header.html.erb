@@ -1,5 +1,5 @@
 <header class="shadow sticky-top">
-  <nav class="navbar navbar-expand-lg" style="background-color:#FFF">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#FFF">
     <div class="container">
       <a class="navbar-brand font-weight-normal" href="/"><%= image_tag 'logo.jpg', size: "100x100"%></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
         <p>※架空のお弁当屋さん「Mogu」の予約注文サイト</p>
         <div class="text-info">
         <% if customer_signed_in? %>
-          <h5>ようこそ、<%= current_customer.last_name %><%=current_customer.first_name %>さん！</h5>
+          <h5>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</h5>
         <% end %>
         </div>
       </div>

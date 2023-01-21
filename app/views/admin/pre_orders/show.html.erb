@@ -6,8 +6,8 @@
       <table class="table table-borderless table-sm">  
         <%= form_with model: @pre_order, url: admin_pre_order_path do |f| %>
           <tr>
-            <td style="width: 20%">購入者</td>
-            <td style="width: 80%">
+            <td>購入者</td>
+            <td>
               <%= link_to admin_customer_path(@pre_order.customer_id) do %>
                 <%= @pre_order.customer.last_name + @pre_order.customer.first_name %>
               <% end %>
@@ -45,22 +45,22 @@
           <th>製作ステータス</th>
         </tr>
         <% @pre_order_details.each do |pre_order_detail| %>
-        <%= form_with model: pre_order_detail, url: admin_pre_order_detail_path(pre_order_detail.id), method: :patch do |f| %>
           <tr>
             <td><%= pre_order_detail.item.name %></td>
             <td><%= pre_order_detail.tax_price %></td>
             <td><%= pre_order_detail.quantity %></td>
             <td><%= pre_order_detail.quantity.to_i * pre_order_detail.tax_price %>円</td>
             <td>
-              <%= f.label :"製作ステータス", class: "col-sm-6 control-label" %>
-              <%= f.radio_button :is_maked, "false" %>
-              <%= f.label :"製作中" %>
-              <%= f.radio_button :is_maked, "true" %>
-              <%= f.label :"製作完了" %>
-              <%= f.submit "更新", class: "btn btn-success" %>
+              <%= form_with model: pre_order_detail, url: admin_pre_order_detail_path(pre_order_detail.id), method: :patch do |f| %>
+                <%= f.label :"製作ステータス", class: "col-sm-6 control-label" %>
+                <%= f.radio_button :is_maked, "false" %>
+                <%= f.label :"製作中" %>
+                <%= f.radio_button :is_maked, "true" %>
+                <%= f.label :"製作完了" %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
             </td>
           </tr>
-          <% end %>
         <% end %>
       </table>
     </div>

@@ -5,18 +5,18 @@
       <h3>マイページ</h3>
     </div>
 
-    <p>登録情報 <%= link_to "編集する", edit_customer_registration_path, class: "btn btn-success rounded-pill" %></p>
+    <p>登録情報 <%= link_to "編集する", information_edit_customers_path, class: "btn btn-success rounded-pill" %></p>
 
     <table class="table table-bordered table-condensed mt-3">
       <tbody>
         <tr>
           <td class="bg-light col-2">氏名</td>
-          <td class="col-10"><%= @customer.last_name %>　<%= @customer.first_name %></td>
+          <td class="col-10"><%= @customer.last_name + @customer.first_name %></td>
         </tr>
 
         <tr>
           <td class="bg-light col-2">カナ</td>
-          <td class="col-10"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+          <td class="col-10"><%= @customer.last_name_kana + @customer.first_name_kana %></td>
         </tr>
 
         <tr>
@@ -32,7 +32,7 @@
     </table>
 
     <div class="col-5 p-3">
-      <p>注文履歴 <%= link_to "一覧を見る", pre_orders_path, class: "btn btn-info rounded-pill" %></p>
+      <p>予約注文履歴 <%= link_to "一覧を見る", pre_orders_path, class: "btn btn-info rounded-pill" %></p>
     </div>
 
   </div>

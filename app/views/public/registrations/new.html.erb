@@ -5,27 +5,27 @@
 
   <div class="col-12 registrations">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
+    <%= render "public/shared/error_messages", resource: resource %>
       
       <div class="field row mt-2">
         <p class="col-3">名前</p>
         <%= f.label :'(姓)', class: 'col-1' %>
-        <%= f.text_field :last_name, autofocus: true, :placeholder => "弁当", required: true %>
+        <%= f.text_field :last_name, autofocus: true, :placeholder => "弁当" %>
         <%= f.label :'(名)', class: 'col-1' %>
-        <%= f.text_field :first_name, autofocus: true, :placeholder => "太郎", required: true %>
+        <%= f.text_field :first_name, autofocus: true, :placeholder => "太郎" %>
       </div>
 
       <div class="field row mt-2">
         <p class="col-3">フリガナ</p>
         <%= f.label :'(セイ)', class: 'col-1' %>
-        <%= f.text_field :last_name_kana, autofocus: true, :placeholder => "ベントウ", required: true %>
+        <%= f.text_field :last_name_kana, autofocus: true, :placeholder => "ベントウ" %>
         <%= f.label :'(メイ)', class: 'col-1' %>
-        <%= f.text_field :first_name_kana, autofocus: true, :placeholder => "タロウ", required: true %>
+        <%= f.text_field :first_name_kana, autofocus: true, :placeholder => "タロウ" %>
       </div>
 
       <div class="field row mt-2">
         <p class="col-4">メールアドレス</p>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'test@sample.com', required: true %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'test@sample.com' %>
       </div>
 
       <% if session[:customer].present? %>
@@ -35,22 +35,22 @@
 
       <div class="field row mt-2">
         <p class="col-4">電話番号(ハイフンなし10or11桁)</p>
-        <%= f.text_field :tel_number, autofocus: true, placeholder: '00011112222', required: true %>
+        <%= f.text_field :tel_number, autofocus: true, placeholder: '00011112222' %>
       </div>
 
       <div class="field row mt-2">
         <p class="col-4">パスワード(6文字以上)</p>
-        <%= f.password_field :password, autocomplete: "new-password", required: true %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
       </div>
 
       <div class="field row mt-2">
         <p class="col-4">パスワード(確認用)</p>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
       <div class="actions row mt-3">
         <div class="col-4"></div>
-        <%= f.submit "新規登録",class: "btn btn-danger rounded-pill", required: true %>
+        <%= f.submit "新規登録",class: "btn btn-danger rounded-pill" %>
       </div>
     <% end %>
   </div>
