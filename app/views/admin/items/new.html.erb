@@ -9,17 +9,17 @@
         <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
 
       <div class="form-group row">
-        <%= f.label :"商品画像", class: "col-3 control-label" %>
+        <%= f.label :"メニュー画像", class: "col-3 control-label" %>
 	      <%= f.file_field :image, accept: "image/*", class: "image col-8" %>
 	    </div>
 
       <div class="form-group row">
-        <%= f.label :"商品名", class: "col-3 control-label" %>
+        <%= f.label :"メニュー名", class: "col-3 control-label" %>
         <%= f.text_field :name, class: "col-8" %>
       </div>
 
       <div class="form-group row">
-        <%= f.label :"商品説明", class: "col-3 control-label" %>
+        <%= f.label :"メニューの説明", class: "col-3 control-label" %>
         <%= f.text_area :introduction, class: "col-8" %>
       </div>
 
