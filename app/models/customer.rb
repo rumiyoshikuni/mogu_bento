@@ -10,7 +10,8 @@ class Customer < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
-  validates :tel_number, presence: true
+  validates :tel_number, presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
+  # numericality: {only_integer: true}=>整数のみ許可、length: { in: 10..11 }=>文字数制限(10〜11桁)
 
   has_many :pre_orders, dependent: :destroy
   has_many :cart_items

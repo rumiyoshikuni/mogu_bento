@@ -17,7 +17,12 @@ class Public::PreOrdersController < ApplicationController
     @pre_order.total_payment = @total_payment
     @total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @pre_order_new = PreOrder.new
-  # 請求金額を出す処理 subtotal はモデルで定義したメソッド
+    
+    @pre_order.receiving_date = Date.parse("#{Date.today.year}-#{params[:pre_order][:receiving_date].split('日')[0].gsub!(/[^\d]/, '-')}")
+    @pre_order.customer_id = current_customer.id
+    unless @pre_order.valid?
+      render :new
+    end
   end
 
   def over
@@ -52,7 +57,7 @@ class Public::PreOrdersController < ApplicationController
   end
 
   def show
-    # checkでリロードされた時の対策
+    # checkでリロードされた場合
     if params[:id] == "check"
       flash[:notice] = "リロードされた為入力画面に戻りました。"
       redirect_to new_pre_order_path

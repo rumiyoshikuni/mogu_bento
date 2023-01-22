@@ -4,7 +4,7 @@
       <div class="row my-4">
         <div class="col-6">
           <h3 class="">
-            <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+            <%= @customer.last_name + @customer.first_name %>さんの会員詳細
           </h3>
         </div>
           <table class="table table-borderless">
@@ -14,11 +14,11 @@
             </tr>
             <tr>
               <th>氏名</th>
-              <th><%= @customer.last_name %>　<%= @customer.first_name %></th>
+              <th><%= @customer.last_name + @customer.first_name %></th>
             </tr>
             <tr>
               <th>フリガナ</th>
-              <th><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></th>
+              <th><%= @customer.last_name_kana + @customer.first_name_kana %></th>
             </tr>
               <th>電話番号</th>
               <th><%= @customer.tel_number %></th>
