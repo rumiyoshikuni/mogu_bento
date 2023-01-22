@@ -19,7 +19,7 @@
             <div class="form-group row">
               <p class="col-3">受取り時間</p>
               <%= f.time_select :receiving_time, { start_hour: 10.minutes.from_now(Time.current).hour, end_hour: 20, start_min: Time.current.min, minute_step: 10}, {class: 'time-box'} %>
-              <!--Time.current.hour：今の時間から選択でき,遡れないようにする-->
+              <!--Time.current.hour：今現在の時間-->
               <p>※お受取り時間は20時50分までとなっております。</p>
             </div>
 
@@ -56,6 +56,7 @@
   });
 
   // current time 
+  // 今の時間が50分より前だと何もしない、後だと時間が繰り上げるようにする
   options.forEach(function(element) {
     if (Number(<%= Time.current.min %> >= 50)) {
       return;
