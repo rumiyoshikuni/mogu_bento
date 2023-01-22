@@ -11,11 +11,13 @@
                 <th>予約注文日時</th>
                 <th>購入者</th>
                 <th>購入個数</th>
+                <th>受取り日</th>
+                <th>受取り時間</th>
               </tr>
             </thead>
             <tbody>
             	<% @pre_orders.each do |pre_order| %>
-              	<tr>
+              	<tr class= "auto">
                   <td>
                     <%= link_to admin_pre_order_path(pre_order.id) do %>
                       <%= pre_order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
@@ -23,6 +25,8 @@
                   </td>
                   <td><%= pre_order.customer.last_name %><%= pre_order.customer.first_name %></td>
                   <td><%= pre_order.pre_order_details.sum(:quantity) %></td>
+                  <td><%= pre_order.receiving_date.strftime('%m月%d日') %></td>
+                  <td><%= pre_order.receiving_time.strftime("%H時%M分") %></td>
                 </tr>
               <% end %>
             </tbody>
