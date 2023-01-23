@@ -3,6 +3,7 @@
     <div class="col-xs-12">
       <h5 class="alert alert-secondary text-center">予約注文履歴一覧</h5>
         <% if @pre_orders.present? %>
+        
           <table class="table table-hover table-bordered">
             <thead>
               <tr class="info">
@@ -11,7 +12,7 @@
                 <th>受取り日</th>
                 <th>受取り時間</th>
                 <th>支払金額</th>
-                <th>注文詳細</th>
+                <th>予約注文詳細</th>
               </tr>
             </thead>
             <tbody>
@@ -41,6 +42,7 @@
               <% end %>
             </tbody>
           </table>
+          
         <% else %>
           <p>注文履歴がありません。</p>
         <% end %>

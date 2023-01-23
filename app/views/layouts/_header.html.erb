@@ -7,7 +7,7 @@
       </button>
 
       <div class="text-left">
-        <p>※架空のお弁当屋さん「Mogu」の予約注文サイト</p>
+        <p>※架空のお弁当屋さん「Mogu」の<br>予約注文サイト</p>
         <div class="text-info">
         <% if customer_signed_in? %>
           <h5>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</h5>
@@ -30,6 +30,11 @@
               <li>
                 <%= link_to my_page_customers_path,class: 'btn btn-dark rounded-pill' do %>
                 <i class="fas fa-user"></i> マイページ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to pre_orders_path,class: 'btn btn-dark rounded-pill' do %>
+                <i class="fas fa-star"></i> 予約注文履歴一覧
                 <% end %>
               </li>
               <li>

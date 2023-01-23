@@ -25,12 +25,9 @@
 - 健康を意識した食事を摂りたい時
 
 ## 設計書
-- ER図<br>
-https://app.diagrams.net/#G1LIqLL-6r7hYIGSy_MdXmkVSDCZkPRwva
-- テーブル定義書<br>
-https://docs.google.com/spreadsheets/d/1hsKhbDxVywRGjoSEXbP1LOuxEqEOOPZncTq0yF7wZOU/edit#gid=1571339652
-- アプリケーション詳細設計書<br>
-https://docs.google.com/spreadsheets/d/1rfGuql-p5CuOjEk4qOAS2tAjN4ZnFx00V5hmy6-oviM/edit#gid=549108681
+- [ER図](https://app.diagrams.net/#G1LIqLL-6r7hYIGSy_MdXmkVSDCZkPRwva)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1hsKhbDxVywRGjoSEXbP1LOuxEqEOOPZncTq0yF7wZOU/edit#gid=1571339652)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1rfGuql-p5CuOjEk4qOAS2tAjN4ZnFx00V5hmy6-oviM/edit#gid=549108681)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -40,31 +37,13 @@ https://docs.google.com/spreadsheets/d/1rfGuql-p5CuOjEk4qOAS2tAjN4ZnFx00V5hmy6-o
 - IDE：Cloud9
 
 ## 使用素材
-ロゴ
-- Canva<br>
-https://www.canva.com/
+### ロゴ
+- [Canva](https://www.canva.com/)
 
-画像素材
-- photo AC<br>
-https://www.photo-ac.com/
-- Unsplash<br>
-https://unsplash.com/ja
-- ソコスト<br>
-https://soco-st.com/?s=%E8%A2%8B
-
-Font Awesome アイコンフォント
-- JOHOBASE<br>
-https://johobase.com/font-awesome-icon-font-list-free/
-
-レイアウト
-- Google Fonts<br>
-https://fonts.google.com/about
-- サルワカ<br>
-https://saruwakakun.com/html-css/reference/buttons
-- Css Stock<br>
-https://pote-chil.com/html-maker/button/
-
-Googleマップ
+### 画像素材
+- [photo AC](https://www.photo-ac.com/)
+- [Unsplash](https://unsplash.com/ja)
+- [ソコスト](https://soco-st.com/?s=%E8%A2%8B)
 
 
 

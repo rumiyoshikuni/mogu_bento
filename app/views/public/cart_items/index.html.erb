@@ -20,14 +20,16 @@
               <th></th>
             </tr>
               <% total = 0 %> <!--合計金額totalの初期化-->
-              <% if current_customer.cart_items.present? %> <!--カート内に商品があった場合-->
+              <% if current_customer.cart_items.present? %> <!--カート内にメニューがあった場合-->
                 <% @cart_items.each do |cart_item| %>
                   <tr>
                     <td>
-                      <%= image_tag cart_item.item.get_image(100,100) %> <!--商品画像-->
-                      <%= cart_item.item.name %> <!--商品名-->
+                      <%= image_tag cart_item.item.get_image(100,100) %>
+                      <%= cart_item.item.name %>
                     </td>
-                    <td><%= cart_item.item.with_tax_price.to_s(:delimited) %> 円</td> <!--商品単価(価格×1.1)-->
+                    <td>
+                      <%= cart_item.item.with_tax_price.to_s(:delimited) %> 円
+                    </td> <!--メニュー単価(価格×1.1)-->
                     <td>
                       <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
                         <%= f.select :quantity, *[1..10], class: "ml-5" %>
@@ -35,7 +37,7 @@
                       <% end %>
                     </td>
                     <td>
-                      <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).to_i %> <!--小計を計算する-->
+                      <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.1).to_i %> <!--小計を計算-->
                       <%= cart_item.subtotal.to_s(:delimited) %> 円 <!--小計を表示-->
                     </td>
                     <td>
@@ -46,23 +48,30 @@
                 <% end %>
               <% end %>
           </table>
+          
       </div>
     </div>
   </div>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-6 text-left">
       <%= link_to "買い物を続ける", root_path, class:"btn btn-info rounded-pill" %>
     </div>
+    
     <table class="table table-bordered col-2 text-right ml-5">
       <tr>
         <th>合計金額</th>
-          <td><%= total.to_s(:delimited) %> 円</td>
+          <td>
+            <%= total.to_s(:delimited) %> 円
+          </td>
       </tr>
     </table>
+    
   </div>
 </div>
+
 <div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-10 ">

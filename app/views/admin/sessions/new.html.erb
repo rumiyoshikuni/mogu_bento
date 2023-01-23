@@ -1,24 +1,23 @@
-<div class="containar">
+<div class="container my-5">
+  <div class="row">
+    <h4 class="px-5 py-4">管理者ログイン</h4>
+  </div>
   <div class="row justify-content-center">
-    <div class="col-lg-9 mt-5">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="h4 mt-3">管理者ログイン</div><br>
-
-      <table class="table table-borderless">
-        <tr>
-          <td style="width: 20%" ><%= f.label "メールアドレス" %></td>
-          <td style="width: 30%"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= f.label "パスワード" %></td>
-          <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
-        </tr>
-      </table>
-      <div class="actions">
-        <%= f.submit "ログイン", class: "btn btn-info"  %>
+    <%= form_with model: @admin, url: session_path(resource_name), class: 'col-10' do |f| %>
+      <div class="field form-inline row">
+        <%= f.label :メールアドレス, class: 'col-4' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-6' %>
       </div>
-      <%= render "admin/shared/links" %>
+
+      <div class="field form-inline row mt-3">
+        <%= f.label :パスワード, class: 'col-4' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-6' %>
+      </div>
+
+      <div class="actions text-center row mt-4">
+        <div class="col-4"></div>
+          <%= f.submit "ログイン", class: 'btn btn-info px-4' %>
+      </div>
     <% end %>
-    </div>
   </div>
 </div>

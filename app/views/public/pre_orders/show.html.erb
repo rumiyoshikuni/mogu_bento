@@ -4,6 +4,7 @@
     <% if @pre_order.present? %>
       <div class="col-xs-7">
         <h5>予約注文情報</h5>
+        
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -34,10 +35,11 @@
             </tr>
           </thead>
         </table>
+        
       </div>
-
       <div class="col-xs-10">
-        <h5></i>予約注文内容</h5>
+        <h5>予約注文内容</h5>
+        
           <table class="table table-bordered">
             <thead>
             <tr class="info">
@@ -48,26 +50,28 @@
             </tr>
             </thead>
             <tbody>
-            <% @pre_order_details.each do |pre_order_detail| %>
-              <tr>
-              <td><%= pre_order_detail.item.name %></td>
-              <td class="text-right"><%= (pre_order_detail.item.with_tax_price).to_s(:delimited) %>円</td>
-              <td class="text-right"><%= pre_order_detail.quantity %></td>
-              <td class="text-right"><%= (pre_order_detail.item.with_tax_price * pre_order_detail.quantity).to_s(:delimited) %>円</td>
-              </tr>
-            <% end %>
+              <% @pre_order_details.each do |pre_order_detail| %>
+                <tr>
+                  <td><%= pre_order_detail.item.name %></td>
+                  <td class="text-right"><%= (pre_order_detail.item.with_tax_price).to_s(:delimited) %>円</td>
+                  <td class="text-right"><%= pre_order_detail.quantity %></td>
+                  <td class="text-right"><%= (pre_order_detail.item.with_tax_price * pre_order_detail.quantity).to_s(:delimited) %>円</td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
+          
       </div>
-      
       <div class="col-xs-3 col-xs-offset-1">
         <h5>請求情報</h5>
+        
         <table class="table table-bordered">
           <tr>
             <th class="info">ご請求金額</th>
               <td class="text-right col-xs-5"><%= @pre_order.total_payment.to_s(:delimited) %>円</td>
           </tr>
         </table>
+        
       </div>
     <% else %>
       <p>注文履歴がありません。</p>
