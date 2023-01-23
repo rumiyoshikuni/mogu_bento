@@ -2,15 +2,15 @@ class Public::CustomersController < ApplicationController
   
   before_action :authenticate_customer!
   before_action :ensure_guest_customer, only: [:edit, :update]
-
+  # 会員のマイページ
   def show
     @customer = current_customer
   end
-
+  # 会員の登録情報編集
   def edit
     @customer = current_customer
   end
-
+  # 会員の登録情報更新
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -20,10 +20,10 @@ class Public::CustomersController < ApplicationController
       render "edit"
     end
   end
-
+  # 会員の退会確認
   def quit
   end
-
+  # 会員の退会処理
   def out
     @customer = current_customer
     @customer.update(is_deleted: true)

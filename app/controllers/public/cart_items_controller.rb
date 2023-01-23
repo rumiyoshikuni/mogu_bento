@@ -2,11 +2,11 @@ class Public::CartItemsController < ApplicationController
 
   before_action :authenticate_customer!
   before_action :ensure_guest_customer
-
+  # カート内メニュー一覧(数量変更・カート削除の要素を含む)
   def index
     @cart_items = current_customer.cart_items.all
   end
-
+  # カート内メニュー追加
   def create
     @cart_item = current_customer.cart_items.build(cart_item_params)
     @cart_items = current_customer.cart_items.all
@@ -21,19 +21,17 @@ class Public::CartItemsController < ApplicationController
     flash[:notice] = "商品を追加しました。"
     redirect_to cart_items_path
   end
-
+  # カート内メニュー更新
   def update
     cart_item = CartItem.find(params[:id])
     if cart_item.update(cart_item_params)
       flash[:notice] = "商品の数量を変更しました。"
-    redirect_to cart_items_path
-  # カートアイテムの更新に成功した時の処理
+      redirect_to cart_items_path
     else
       render 'index'
-  # 失敗した時の処理
     end
   end
-
+  # カート内メニュー一つ削除
   def destroy
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
@@ -41,8 +39,8 @@ class Public::CartItemsController < ApplicationController
     flash[:notice] = "商品を削除しました。"
     redirect_to cart_items_path
   end
-
-  def all_destroy  #カート内全て削除
+  # カート内メニュー全て削除
+  def all_destroy
     current_customer.cart_items.destroy_all
     flash[:notice] = "カートの商品を全て削除しました。"
     redirect_to cart_items_path

@@ -1,19 +1,19 @@
 class Admin::CustomersController < ApplicationController
 
   before_action :authenticate_admin!
-  
+  # 会員一覧
   def index
     @customers = Customer.page(params[:page]).per(10)
   end
-
+  # 会員詳細
   def show
     @customer = Customer.find(params[:id])
   end
-
+  # 会員編集
   def edit
     @customer = Customer.find(params[:id])
   end
-
+  # 会員情報の更新
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)

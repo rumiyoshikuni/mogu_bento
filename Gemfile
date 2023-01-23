@@ -58,7 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #デバイス導入
 gem 'devise'
-#enumで製作ステータス管理
+#enumで支払いのステータス管理（未使用、今後実装）
 gem 'enum_help'
 #ページネーション
 gem 'kaminari','~> 1.2.1'

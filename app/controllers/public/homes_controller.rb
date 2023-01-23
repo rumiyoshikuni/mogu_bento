@@ -1,5 +1,6 @@
 class Public::HomesController < ApplicationController
   
+  # トップページ
   def top
     @genres = Genre.all
     if params[:genre_id]
@@ -9,7 +10,7 @@ class Public::HomesController < ApplicationController
       @items = Item.where(is_active: 1).page(params[:page]).per(4)
     end
   end
-  
+  # About
   def about
   end
   

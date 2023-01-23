@@ -1,7 +1,7 @@
 class Admin::PreOrderDetailsController < ApplicationController
   
   before_action :authenticate_admin!
-  
+  # 製作ステータスの更新
   def update
     pre_order_detail = PreOrderDetail.find(params[:id])
     if pre_order_detail.update(pre_order_detail_params)

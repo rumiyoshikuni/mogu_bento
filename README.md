@@ -2,11 +2,14 @@
 
 ## サイト概要
 ### サイトテーマ
-健康を考慮した架空のお弁当屋さん「Mogu」のお弁当やお惣菜等を、時間や日にちを指定して予約ができるサイトです。ジャンル別に商品の選別をすることもできます。
+健康を考慮した架空のお弁当屋さん「Mogu」のお弁当やお惣菜等を、時間や日にちを指定して予約ができるサイトです。<br>
+ジャンル別に商品の選別をすることもできます。
 
 
 ### テーマを選んだ理由
-コロナ禍で外出を控える方が増えており、お店に行って商品を選ぶことから始まるのも億劫だと感じる方も多いのではないかと思います。テイクアウトできる飲食店も増えており、簡単にネットで予約ができ、支払い、受け取るだけで済むサービスがあると便利だと思い、このテーマにしました。また、お弁当以外にもお惣菜や店舗で販売している商品をジャンル別で閲覧できることでお客様も利用しやすくなると思い、機能の一つに加えました。
+コロナ禍で外出を控える方が増えており、お店に行って商品を選ぶことから始まるのも億劫だと感じる方も多いのではないかと思います。<br>
+テイクアウトできる飲食店も増えており、簡単にネットで予約ができ、支払い、受け取るだけで済むサービスがあると便利だと思い、このテーマにしました。<br>
+また、お弁当以外にもお惣菜や店舗で販売している商品をジャンル別で閲覧できることでお客様も利用しやすくなると思い、機能の一つに加えました。
 
 ### ターゲットユーザー
 - 一人暮らしの方
@@ -22,10 +25,12 @@
 - 健康を意識した食事を摂りたい時
 
 ## 設計書
-- ER図
+- ER図<br>
 https://app.diagrams.net/#G1LIqLL-6r7hYIGSy_MdXmkVSDCZkPRwva
-- テーブル定義書
+- テーブル定義書<br>
 https://docs.google.com/spreadsheets/d/1hsKhbDxVywRGjoSEXbP1LOuxEqEOOPZncTq0yF7wZOU/edit#gid=1571339652
+- アプリケーション詳細設計書<br>
+https://docs.google.com/spreadsheets/d/1rfGuql-p5CuOjEk4qOAS2tAjN4ZnFx00V5hmy6-oviM/edit#gid=549108681
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -35,12 +40,36 @@ https://docs.google.com/spreadsheets/d/1hsKhbDxVywRGjoSEXbP1LOuxEqEOOPZncTq0yF7w
 - IDE：Cloud9
 
 ## 使用素材
-画像素材
-- photo AC
-https://www.photo-ac.com/
-- Unsplash
-https://unsplash.com/ja
-- ソコスト
-https://soco-st.com/?s=%E8%A2%8B
-- Canva
+ロゴ
+- Canva<br>
 https://www.canva.com/
+
+画像素材
+- photo AC<br>
+https://www.photo-ac.com/
+- Unsplash<br>
+https://unsplash.com/ja
+- ソコスト<br>
+https://soco-st.com/?s=%E8%A2%8B
+
+Font Awesome アイコンフォント
+- JOHOBASE<br>
+https://johobase.com/font-awesome-icon-font-list-free/
+
+レイアウト
+- Google Fonts<br>
+https://fonts.google.com/about
+- サルワカ<br>
+https://saruwakakun.com/html-css/reference/buttons
+- Css Stock<br>
+https://pote-chil.com/html-maker/button/
+
+Googleマップ
+
+
+
+
+
+
+
+

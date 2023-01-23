@@ -1,7 +1,7 @@
 class Admin::PreOrdersController < ApplicationController
 
   before_action :authenticate_admin!
-
+  # 予約注文詳細
   def show
     @pre_order_details = PreOrderDetail.where(pre_order_id: params[:id])
     @pre_order = PreOrder.find(params[:id])

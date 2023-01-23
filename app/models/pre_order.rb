@@ -19,6 +19,7 @@ class PreOrder < ApplicationRecord
   validate :expiration_date_cannot_be_in_the_past
   validate :over_time
   
+  # モデルのステートを確認して、無効な場合にerrorsコレクションにメッセージを追加するメソッドを作成できる
   def expiration_date_cannot_be_in_the_past
       receiving_date_time= Time.zone.parse(
       "#{receiving_date.to_s} #{receiving_time.hour}:#{receiving_time.min}"

@@ -1,7 +1,7 @@
 class Public::ItemsController < ApplicationController
 
   before_action :authenticate_customer!, except: [:index]
-  
+  # メニュー一覧
   def index
     @genres = Genre.all
     if params[:genre_id]
@@ -11,7 +11,7 @@ class Public::ItemsController < ApplicationController
       @items = Item.where(is_active: 1).page(params[:page]).per(8)
     end
   end
-
+  # メニュー詳細
   def show
     @genres = Genre.all
     @item = Item.find(params[:id])

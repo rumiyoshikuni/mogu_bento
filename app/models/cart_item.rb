@@ -5,6 +5,7 @@ class CartItem < ApplicationRecord
   
   validates :item_id, :quantity, presence: true
   validates :quantity, numericality:{ only_integer: true }
+  # numericality: {only_integer: true}=>整数のみ許可
 
   # 小計を求めるメソッド
   def subtotal
