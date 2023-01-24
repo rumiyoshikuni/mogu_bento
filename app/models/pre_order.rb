@@ -18,6 +18,7 @@ class PreOrder < ApplicationRecord
   
   validate :expiration_date_cannot_be_in_the_past
   validate :over_time
+  # validate :date_current_today
   
   # モデルのステートを確認して、無効な場合にerrorsコレクションにメッセージを追加するメソッドを作成できる
   def expiration_date_cannot_be_in_the_past
@@ -34,5 +35,10 @@ class PreOrder < ApplicationRecord
     
     errors.add(:base, "営業時間内の時間を指定してください。")
   end
+  
+  # def date_current_today
+    
+  #   errors.add(:receiving_date, "当日のキャンセルはできません。") if receiving_date < (Time.current + 1)
+  # end
 
 end

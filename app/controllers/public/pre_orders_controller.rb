@@ -66,6 +66,16 @@ class Public::PreOrdersController < ApplicationController
     @pre_order_detail = PreOrderDetail.find(params[:id])
     @pre_order_details = @pre_order.pre_order_details.all
   end
+  # 予約注文キャンセル
+  def destroy
+    @pre_order = PreOrder.find(params[:id])
+    if @pre_order.destroy
+      flash[:notice] = "予約注文をキャンセルしました。"
+      redirect_to pre_orders_path
+    else
+      render :index
+    end
+  end
 
   private
 

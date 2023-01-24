@@ -37,6 +37,9 @@
                   </td>
            	      <td class="auto">
            	        <%= link_to "表示する",pre_order_path(pre_order), class: "btn btn-info rounded-pill" %>
+           	        <% if pre_order.customer == current_customer %>
+           	          <%= link_to 'キャンセル', pre_order_path(pre_order), method: :delete, class: "btn btn-danger rounded-pill", "data-confirm" => "本当にキャンセルしますか？" %>
+           	        <% end %>
                   </td>
                 </tr>
               <% end %>

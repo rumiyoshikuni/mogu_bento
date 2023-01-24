@@ -28,7 +28,7 @@ Rails.application.routes.draw do
           delete "all_destroy"
       end
     end
-    resources :pre_orders, only: [:new, :index, :show, :create] do
+    resources :pre_orders, only: [:new, :index, :show, :create, :destroy] do
       collection do
         post 'check'
         get 'over'
