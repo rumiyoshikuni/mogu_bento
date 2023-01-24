@@ -38,7 +38,7 @@ class PreOrder < ApplicationRecord
   
   # def date_current_today
     
-  #   errors.add(:receiving_date, "当日のキャンセルはできません。") if receiving_date < (Time.current + 1)
+  #   errors.add(:receiving_date, "当日のキャンセルはできません。") if receiving_date < (Date.current + 1)
   # end
 
 end
