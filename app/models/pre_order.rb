@@ -4,6 +4,7 @@ class PreOrder < ApplicationRecord
   END_HOUR = 20
 
   belongs_to :customer
+  # 予約注文がキャンセルされたら予約注文詳細も削除する
   has_many :pre_order_details, dependent: :destroy
   has_many :items, through: :pre_orders_details
   
@@ -18,9 +19,7 @@ class PreOrder < ApplicationRecord
   
   validate :expiration_date_cannot_be_in_the_past
   validate :over_time
-  # validate :date_current_today
   
-  # モデルのステートを確認して、無効な場合にerrorsコレクションにメッセージを追加するメソッドを作成できる
   def expiration_date_cannot_be_in_the_past
       receiving_date_time= Time.zone.parse(
       "#{receiving_date.to_s} #{receiving_time.hour}:#{receiving_time.min}"
@@ -35,10 +34,5 @@ class PreOrder < ApplicationRecord
     
     errors.add(:base, "営業時間内の時間を指定してください。")
   end
-  
-  # def date_current_today
-    
-  #   errors.add(:receiving_date, "当日のキャンセルはできません。") if receiving_date < (Date.current + 1)
-  # end
 
 end

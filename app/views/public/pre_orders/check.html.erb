@@ -68,7 +68,9 @@
           <%= f.hidden_field :receiving_time, value: @pre_order.receiving_time %>
           <%= f.hidden_field :demand, value: @pre_order.demand %>
           <%= f.hidden_field :total_payment, value: @total_payment %>
-          <p>※当日のキャンセルは承っておりませんのでご注意ください。</p>
+          <% if @pre_order.receiving_date == Date.current %>
+            <p>※当日のキャンセルは承っておりませんのでご注意ください。</p>
+          <% end %>
           <%= f.submit "注文を確定する", class: "btn btn-info rounded-pill" %>
         <% end %>
       </div>
