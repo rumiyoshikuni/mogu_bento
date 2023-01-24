@@ -60,8 +60,14 @@
               <li><%= link_to admin_genres_path,class: 'btn btn-dark rounded-pill' do %> ジャンル  <% end %></li>
               <li><%= link_to destroy_admin_session_path, method: :delete,class: 'btn btn-dark rounded-pill' do %> ログアウト <% end %></li>
             <% else %>
-              <li><%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-dark rounded-pill sign_in", method: :post %></li>
-              <li><%= link_to about_path,class: 'btn btn-dark rounded-pill' do %> About <% end %></li>
+              <li>
+                <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: "btn btn-dark rounded-pill sign_in", method: :post %>
+              </li>
+              <li>
+                <%= link_to about_path,class: 'btn btn-dark rounded-pill' do %>
+                <i class="fas fa-apple-alt"></i>About
+                <% end %>
+              </li>
               <li>
                 <%= link_to items_path,class: 'btn btn-dark rounded-pill' do %>
                 <i class="fas fa-book-open"></i> メニュー
