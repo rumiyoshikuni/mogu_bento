@@ -4,7 +4,7 @@ class PreOrder < ApplicationRecord
   END_HOUR = 20
 
   belongs_to :customer
-  has_many :pre_order_details
+  has_many :pre_order_details, dependent: :destroy
   has_many :items, through: :pre_orders_details
   
   # 小計を求めるメソッド
