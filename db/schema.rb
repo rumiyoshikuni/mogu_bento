@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2023_01_17_081427) do
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.integer "tel_number", null: false
+    t.string "tel_number", null: false
     t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
