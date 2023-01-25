@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   
   before_action :authenticate_customer!
-  before_action :ensure_guest_customer, only: [:edit, :update]
+  before_action :ensure_guest_customer, only: [:edit, :show, :update]
   # 会員のマイページ
   def show
     @customer = current_customer

@@ -27,21 +27,21 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
   
-  #退会している場合の処理内容
+  # 退会している場合の処理内容
   # 退会しているかを判断するメソッド
   def customer_state
-    ## 入力されたemailからアカウントを1件取得
+    # 入力されたemailからアカウントを1件取得
     @customer = Customer.find_by(email: params[:customer][:email])
-    ## アカウントを取得できなかった場合、このメソッドを終了する
+    # アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
-    ## 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別、退会している
+    # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別、退会している
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
       flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
       redirect_to new_customer_registration_path
     end
   end
   
-  #会員のログイン、ログアウト
+  # 会員のログイン、ログアウト
   def after_sign_in_path_for(resource)
     flash[:notice] = "ログインしました。"
     root_path

@@ -37,8 +37,8 @@
                   </td>
            	      <td class="auto">
            	        <%= link_to "表示する",pre_order_path(pre_order), class: "btn btn-info rounded-pill" %>
-           	        <!--もし受取り日が当日だった場合、キャンセルボタンを表示させない-->
-           	        <% if pre_order.receiving_date != Date.current %>
+           	        <!--もし受取り日が当日、過去の日付けだった場合、キャンセルボタンを表示させない-->
+           	        <% if pre_order.receiving_date > Date.current %>
            	          <%= link_to 'キャンセル', pre_order_path(pre_order), method: :delete, class: "btn btn-danger rounded-pill", "data-confirm" => "本当にキャンセルしますか？" %>
            	        <% end %>
                   </td>

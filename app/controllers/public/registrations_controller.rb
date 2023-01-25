@@ -3,6 +3,7 @@
 class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :ensure_guest_customer, only: [:edit, :show, :update]
 
   # GET /resource/sign_up
   # def new
@@ -66,5 +67,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     flash[:notice] = "新規登録が完了しました。"
     my_page_customers_path
+  end
+  
+  def ensure_guest_customer
+    if current_customer.email == "guest@example.com"
+      redirect_to root_path, notice: 'ゲストユーザーは編集画面へ遷移できません。'
+    end
   end
 end
