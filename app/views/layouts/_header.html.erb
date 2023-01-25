@@ -21,12 +21,22 @@
             <!--ゲストログインかどうかの確認-->
             <% if customer_signed_in? && current_customer.email == 'guest@example.com' %>
               <li>
+                <%= link_to about_path,class: 'btn btn-dark rounded-pill' do %>
+                <i class="fas fa-apple-alt"></i>About
+                <% end %>
+              </li>
+              <li>
+                <%= link_to items_path,class: 'btn btn-dark rounded-pill' do %>
+                <i class="fas fa-book-open"></i> メニュー
+                <% end %>
+              </li>
+              <li>
                 <%= link_to destroy_customer_session_path, method: :delete,class: 'btn btn-dark rounded-pill' do %>
                 <i class="fas fa-sign-out-alt"></i> ログアウト
                 <% end %>
               </li>
             <!--会員ログイン-->
-            <% elsif customer_signed_in? %>
+            <% elsif customer_signed_in? && customer_signed_in? && current_customer.email == 'guest@example.com'%>
               <li>
                 <%= link_to my_page_customers_path,class: 'btn btn-dark rounded-pill' do %>
                 <i class="fas fa-user"></i> マイページ
