@@ -2,7 +2,14 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 // Googlefont
-div, p, span, h1, h2, h3, h4, h5 {
+div,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Zen Maru Gothic', sans-serif;
 }
 
@@ -168,3 +175,20 @@ iframe {
     border-right: 3px solid #000;
     transform: translateY(20%) rotate(-45deg);
 }
+
+// ページネーション
+// .pagination {
+//   display: flex;
+//   align-items: center;
+//   color: #fff;
+// }
+
+// .page-link {
+//   background: #fff;
+//   color: #000;
+// }
+
+// .page-item active {
+//   background-color: #000;
+//   color: #fff;
+// }

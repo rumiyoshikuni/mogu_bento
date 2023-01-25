@@ -10,7 +10,7 @@
         <p>※架空のお弁当屋さん「Mogu」の<br>予約注文サイト</p>
         <div class="text-info">
         <% if customer_signed_in? %>
-          <h5>ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！</h5>
+          <h5>ようこそ、<%= current_customer.first_name %>さん！</h5>
         <% end %>
         </div>
       </div>
