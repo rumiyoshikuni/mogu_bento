@@ -17,6 +17,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "メニューが保存されました。"
       redirect_to admin_item_path(@item.id)
     else
+      flash[:alert] = "正しい情報を入力してください。"
       @genres = Genre.all
       render :new
     end
@@ -34,9 +35,9 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      flash[:notice] = "メニューを更新しました。"
-      redirect_to admin_item_path(@item.id)
+      redirect_to admin_item_path(@item.id), notice: "メニューを更新しました。"
     else
+      flash[:alert] = "メニューを更新に失敗しました。"
       @genres = Genre.all
       render :edit
     end

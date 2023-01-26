@@ -13,15 +13,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    root to: 'homes#top'
-    get 'about' => 'homes#about'
+    root to: "homes#top"
+    get "about" => "homes#about"
     resources :items, only: [:index, :show]
       resource :customers,only: [] do
       get "my_page"=>"customers#show"
       get "information/edit"=>"customers#edit"
       patch "information"=>"customers#update"
-      get 'quit'
-      patch 'out'
+      get "quit"
+      patch "out"
     end
       resources :cart_items, only: [:index, :create, :update, :destroy] do
         collection do
@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     end
     resources :pre_orders, only: [:new, :index, :show, :create, :destroy] do
       collection do
-        post 'check'
-        get 'over'
+        post "check"
+        get "over"
       end
     end
   end
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
-    get 'pre_orders' => 'homes#top'
+    get "pre_orders" => "homes#top"
     resources :pre_orders, only: [:show]
     resources :pre_order_details, only: [:update]
   end

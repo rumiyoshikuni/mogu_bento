@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   
-  before_action :authenticate_customer!
   before_action :ensure_guest_customer, only: [:edit, :show, :update]
+  
   # 会員のマイページ
   def show
     @customer = current_customer
@@ -14,9 +14,9 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      flash[:notice] = "登録情報を変更しました。"
-      redirect_to my_page_customers_path
+      redirect_to my_page_customers_path, notice: "登録情報を更新しました。"
     else
+      flash[:alert] = "正しい情報を入力してください。"
       render "edit"
     end
   end
@@ -29,7 +29,7 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-    redirect_to root_path
+    redirect_to root_path 
   end
 
   private

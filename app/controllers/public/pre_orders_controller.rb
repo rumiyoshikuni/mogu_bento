@@ -58,8 +58,7 @@ class Public::PreOrdersController < ApplicationController
   def show
     # checkでリロードされた場合
     if params[:id] == "check"
-      flash[:notice] = "リロードされた為入力画面に戻りました。"
-      redirect_to new_pre_order_path
+      redirect_to new_pre_order_path, notice: "リロードされた為入力画面に戻りました。"
       return
     end
     @pre_order = PreOrder.find(params[:id])
@@ -70,8 +69,7 @@ class Public::PreOrdersController < ApplicationController
   def destroy
     @pre_order = PreOrder.find(params[:id])
     if @pre_order.destroy
-      flash[:notice] = "予約注文をキャンセルしました。"
-      redirect_to pre_orders_path
+      redirect_to pre_orders_path, notice: "予約注文をキャンセルしました。"
     else
       render :index
     end

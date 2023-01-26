@@ -5,8 +5,7 @@ class Admin::PreOrderDetailsController < ApplicationController
   def update
     pre_order_detail = PreOrderDetail.find(params[:id])
     if pre_order_detail.update(pre_order_detail_params)
-      flash[:notice] = "製作ステータスが更新されました。"
-      redirect_to admin_pre_order_path(pre_order_detail.pre_order_id)
+      redirect_to admin_pre_order_path(pre_order_detail.pre_order_id), notice: "製作ステータスが更新されました。"
     end
   end
 

@@ -18,17 +18,15 @@ class Public::CartItemsController < ApplicationController
       end
     end
     @cart_item.save
-    flash[:notice] = "メニューを追加しました。"
-    redirect_to cart_items_path
+    redirect_to cart_items_path, notice: "メニューを追加しました。"
   end
   # カート内メニュー更新
   def update
     cart_item = CartItem.find(params[:id])
     if cart_item.update(cart_item_params)
-      flash[:notice] = "メニューの数量を変更しました。"
-      redirect_to cart_items_path
+      redirect_to cart_items_path, notice: "メニューの数量を変更しました。"
     else
-      render 'index'
+      render "index"
     end
   end
   # カート内メニュー一つ削除
@@ -36,14 +34,12 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     @cart_items = CartItem.all
-    flash[:notice] = "メニューを削除しました。"
-    redirect_to cart_items_path
+    redirect_to cart_items_path, notice: "メニューを削除しました。"
   end
   # カート内メニュー全て削除
   def all_destroy
     current_customer.cart_items.destroy_all
-    flash[:notice] = "カートのメニューを全て削除しました。"
-    redirect_to cart_items_path
+    redirect_to cart_items_path, notice: "カートのメニューを全て削除しました。"
   end
 
 private

@@ -3,15 +3,15 @@
     <h4 class="px-5 py-4">会員の方はこちらからログイン</h4>
   </div>
   <div class="row justify-content-center">
-    <%= form_with model: @customer, url: customer_session_path, class: 'col-10' do |f| %>
+    <%= form_with model: @customer, url: customer_session_path, class: "col-10" do |f| %>
       <div class="field form-inline row">
-        <%= f.label :メールアドレス, class: 'col-4' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-6' %>
+        <%= f.label :メールアドレス, class: "col-4" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-6" %>
       </div>
       
       <div class="field form-inline row mt-3">
         <%= f.label :パスワード, class: 'col-4' %>
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-6' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-6" %>
       </div>
 
       <div class="actions text-center row mt-4">
