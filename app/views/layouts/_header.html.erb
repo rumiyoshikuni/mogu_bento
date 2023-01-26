@@ -9,9 +9,11 @@
       <div class="text-left">
         <p>※架空のお弁当屋さん「Mogu」の<br>予約注文サイト</p>
         <div class="text-info">
-        <% if customer_signed_in? %>
-          <h5>ようこそ、<%= current_customer.first_name %>さん！</h5>
-        <% end %>
+          <% if customer_signed_in? && current_customer.email == 'guest@example.com' %>
+            <h5>ようこそ、ゲストさん！</h5>
+          <% elsif customer_signed_in? %>
+            <h5>ようこそ、<%= current_customer.first_name %>さん！</h5>
+          <% end %>
         </div>
       </div>
 
@@ -35,7 +37,6 @@
                 <i class="fas fa-sign-out-alt"></i> ログアウト
                 <% end %>
               </li>
-              
             <!--会員ログイン-->
             <% elsif customer_signed_in? %>
               <li>
