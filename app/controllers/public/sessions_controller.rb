@@ -36,7 +36,7 @@ class Public::SessionsController < Devise::SessionsController
     return if !@customer
     # 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別、退会している
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
-      flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
+      flash[:danger] = "お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。"
       redirect_to new_customer_registration_path
     end
   end

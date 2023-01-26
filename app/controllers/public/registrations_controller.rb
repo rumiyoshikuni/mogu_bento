@@ -71,7 +71,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   def ensure_guest_customer
     if current_customer.email == "guest@example.com"
-      redirect_to root_path, notice: 'ゲストユーザーは編集画面へ遷移できません。'
+      redirect_to root_path, notice: "ゲストユーザーは編集画面へ遷移できません。"
     end
   end
 end

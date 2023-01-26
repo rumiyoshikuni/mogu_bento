@@ -9,9 +9,14 @@ class Admin::GenresController < ApplicationController
   # ジャンル登録
   def create
     @genre = Genre.new(genre_params)
-    @genre.save
-    flash[:notice] = "ジャンルを追加しました。"
-    redirect_to admin_genres_path
+    if @genre.save
+      flash[:notice] = "ジャンルを追加しました。"
+      redirect_to admin_genres_path
+    else
+      @genres = Genre.all
+      flash[:notice] = "正しい情報を入力してください。"
+      render "index"
+    end
   end
   # ジャンル編集
   def edit
@@ -20,9 +25,13 @@ class Admin::GenresController < ApplicationController
   # ジャンル更新
   def update
     @genre = Genre.find(params[:id])
-    @genre.update(genre_params)
-    flash[:notice] = "ジャンル名を更新しました。"
-    redirect_to admin_genres_path
+    if @genre.update(genre_params)
+      flash[:notice] = "ジャンル名を更新しました。"
+      redirect_to admin_genres_path
+    else
+      flash[:notice] = "ジャンルの更新に失敗しました。"
+      render "edit"
+    end
   end
   
   private

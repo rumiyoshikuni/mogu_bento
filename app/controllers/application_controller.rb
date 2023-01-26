@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+  
+  # 全てのコントローラーの実行前にアクションさせる
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
