@@ -4,7 +4,9 @@
     <div class="col-sm-12">
       <div class="px-5 py-4">
         <h4>予約注文情報入力</h4>
-        <%= render 'error_messages' %>
+        <span class="text-danger">
+          <%= render 'error_messages' %>
+        </span>
       </div>
 
       <% if current_customer.cart_items.present? %>

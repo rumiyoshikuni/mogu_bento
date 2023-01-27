@@ -5,7 +5,9 @@
 
   <div class="col-12 registrations">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
+    <span class="text-danger">
+      <%= render "public/shared/error_messages", resource: resource %>
+    </span>
       
       <div class="field row mt-2">
         <p class="col-3">名前</p>
