@@ -62,7 +62,7 @@ class Public::PreOrdersController < ApplicationController
       return
     end
     @pre_order = PreOrder.find(params[:id])
-    @pre_order_detail = PreOrderDetail.find(params[:id])
+    @pre_order_detail = PreOrderDetail.find_by(params[:pre_order_detail_id])
     @pre_order_details = @pre_order.pre_order_details.all
   end
   # 予約注文キャンセル
