@@ -50,9 +50,9 @@ class Public::PreOrdersController < ApplicationController
     @cart_items.destroy_all # 会員に関連するカートのデータ(予約注文したデータ)をすべて削除(カートを空にする)
     redirect_to over_pre_orders_path
   end
-  # 予約注文履歴
+  # 予約注文履歴、order(created_at: :desc)：最新の予約注文を1ページ目に表示
   def index
-    @pre_orders = current_customer.pre_orders.page(params[:page]).per(10)
+    @pre_orders = current_customer.pre_orders.order(created_at: :desc).page(params[:page]).per(10)
   end
   # 予約注文履歴詳細
   def show

@@ -1,9 +1,9 @@
 class Admin::ItemsController < ApplicationController
   
   before_action :authenticate_admin!
-  # メニュー一覧
+  # メニュー一覧、order(created_at: :desc)：最新のメニューを1ページ目に表示
   def index
-    @items = Item.page(params[:page]).per(5)
+    @items = Item.order(created_at: :desc).page(params[:page]).per(5)
   end
   # メニュー新規登録画面
   def new
