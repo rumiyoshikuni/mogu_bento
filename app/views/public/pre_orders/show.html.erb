@@ -23,16 +23,7 @@
               <th class="info">ご要望</th>
                 <td class="text-left"><%= @pre_order.demand %></td>
             </tr>
-            <tr>
-              <th class="info">製作ステータス</th>
-                <td class="text-left">
-                  <% if @pre_order_detail.is_maked == false %>
-                    <p>製作中</p>
-                  <% elsif @pre_order_detail.is_maked == true %>
-                    <p>製作完了</p>
-                  <% end %>
-                </td>
-            </tr>
+
           </thead>
         </table>
         
@@ -47,6 +38,7 @@
               <th>単価(税込)</th>
               <th>数量</th>
               <th>小計</th>
+              <th>製作ステータス</th>
             </tr>
             </thead>
             <tbody>
@@ -56,6 +48,13 @@
                   <td class="text-right"><%= (pre_order_detail.item.with_tax_price).to_s(:delimited) %>円</td>
                   <td class="text-right"><%= pre_order_detail.quantity %></td>
                   <td class="text-right"><%= (pre_order_detail.item.with_tax_price * pre_order_detail.quantity).to_s(:delimited) %>円</td>
+                  <td class="text-right">
+                    <% if pre_order_detail.is_maked == false %>
+                      製作中
+                    <% elsif pre_order_detail.is_maked == true %>
+                      製作完了
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
