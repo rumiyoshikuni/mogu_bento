@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   #ゲストユーザーをログイン状態にする
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/customers/sessions#guest_sign_in'
+    get 'customers', to: 'public/registrations#index'
   end
 
   scope module: :public do

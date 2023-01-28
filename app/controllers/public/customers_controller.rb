@@ -17,7 +17,7 @@ class Public::CustomersController < ApplicationController
       redirect_to my_page_customers_path, notice: "登録情報を更新しました。"
     else
       flash[:alert] = "正しい情報を入力してください。"
-      render "edit"
+      redirect_to information_edit_customers_path
     end
   end
   # 会員の退会確認

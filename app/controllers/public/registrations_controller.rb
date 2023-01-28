@@ -5,6 +5,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   before_action :ensure_guest_customer, only: [:edit, :show, :update]
 
+  def index
+    redirect_to new_customer_registration_path
+  end
   # GET /resource/sign_up
   # def new
   #   super
